@@ -6,7 +6,7 @@ const FeaturedProducts = () => {
     id: i + 1,
     title: `Book Title ${i + 1}`,
     author: `Author ${i + 1}`,
-    cover: `/images/book-${i + 1}.jpg`, // Replace with your image paths
+    cover: `/images/book-${i + 1}.jpg`, 
   }));
 
   return (
