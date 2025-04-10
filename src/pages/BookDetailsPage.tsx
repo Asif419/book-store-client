@@ -4,7 +4,6 @@ import { useGetBookByIdQuery } from "../redux/features/api/endpoints/bookApi";
 const BookDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
   const { data: book, isLoading, isError } = useGetBookByIdQuery(id);
-  console.log(book)
 
   if (isLoading) return <p className="text-center py-10">Loading book details...</p>;
   if (isError || !book) return <p className="text-center py-10 text-error">Failed to load book.</p>;

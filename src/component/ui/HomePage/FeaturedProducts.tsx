@@ -6,9 +6,7 @@ const FeaturedProducts = () => {
 
   const { data: response, isLoading, isError } = useGetBooksQuery();
   const featuredBooks = response?.data?.slice(0, 6) ?? [];
-  console.log(featuredBooks)
 
-  console.log(featuredBooks)
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>Failed to load books.</p>;
 

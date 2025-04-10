@@ -1,6 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../redux/features/api/endpoints/authApi";
 import { useForm } from "react-hook-form";
+import { useAppDispatch } from "../redux/hook";
+import { setUser } from "../redux/features/api/endpoints/authSlice";
+import { useState } from "react";
 
 const LoginPage = () => {
   type LoginFormValues = {
@@ -10,6 +13,9 @@ const LoginPage = () => {
 
 
   const [login, { data, isLoading, isError, error }] = useLoginMutation();
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const [loginError, setLoginError] = useState<string | null>(null);
 
   const {
     register,
@@ -20,11 +26,19 @@ const LoginPage = () => {
   const onSubmit = async (formData: LoginFormValues) => {
     try {
       const res = await login(formData).unwrap();
-      console.log("✅ Login success:", res);
 
-  
-    } catch (err) {
-      console.error("❌ Login failed:", err);
+      dispatch(setUser({
+        user: res?.data?.verifiedUser,
+        token: res?.data?.token,
+      }));
+
+      localStorage.setItem('token', res.data.token);
+
+      navigate('/');
+    } catch (error: any) {
+      console.error("Login failed", error);
+      const message = error?.data?.message || "Login failed. Please try again.";
+      setLoginError(message);
     }
   };
 
@@ -51,6 +65,11 @@ const LoginPage = () => {
           {errors.password && <p className="text-error text-sm">{errors.password.message}</p>}
 
           <button type="submit" className="btn btn-primary w-full">Login</button>
+          {loginError && (
+            <div className="text-error bg-base-200 p-2 text-sm rounded">
+              {loginError}
+            </div>
+          )}
         </form>
 
         <div className="flex justify-between items-center pt-4 border-t text-sm text-gray-500">
