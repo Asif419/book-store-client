@@ -1,14 +1,9 @@
-import { Route, Routes } from 'react-router-dom'
-import HomePage from './pages/HomePage'
-import NotFoundPage from './pages/NotFoundpage'
+import MainLayout from './component/layout/MainLayout'
 
 function App() {
 
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+    <MainLayout></MainLayout>
   )
 }
 
