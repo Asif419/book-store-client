@@ -1,9 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useGetBooksQuery } from "../../../redux/features/api/endpoints/bookApi";
 
 const FeaturedProducts = () => {
+  const navigate = useNavigate();
+
   const { data: response, isLoading, isError } = useGetBooksQuery();
   const featuredBooks = response?.data?.slice(0, 6) ?? [];
+  console.log(featuredBooks)
 
   console.log(featuredBooks)
   if (isLoading) return <p>Loading...</p>;
@@ -40,7 +43,7 @@ const FeaturedProducts = () => {
               <h3 className="text-lg font-semibold">{book.title}</h3>
               <p className="text-sm text-gray-500">{book.author}</p>
               <div className="card-actions justify-end">
-                <button className="btn btn-primary btn-sm">View</button>
+                <button onClick={() => navigate(`book-details/${book._id}`)} className="btn btn-primary btn-sm">View</button>
               </div>
             </div>
           </div>

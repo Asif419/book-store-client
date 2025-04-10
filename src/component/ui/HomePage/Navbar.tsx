@@ -17,8 +17,8 @@ const Navbar = () => {
                         </svg>
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><NavLink to={'/users/home'}>Home</NavLink></li>
-                        <li><NavLink to={'/users/all-books'}>Books</NavLink></li>
+                        <li><NavLink to={'/'}>Home</NavLink></li>
+                        <li><NavLink to={'all-products'}>Books</NavLink></li>
                         <li><NavLink to={'about'}>About</NavLink></li>
                         <li><NavLink to={'contact'}>Contact</NavLink></li>
                         <button className="btn btn-outline btn-sm"><NavLink to={'/login'}>Login</NavLink></button>

@@ -1,9 +1,11 @@
-// bookApi.ts
 import { apiSlice } from "../apiSlice";
 
 const bookApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getBooks: builder.query({ query: () => "/product" }),
+    getBookById: builder.query({
+      query: (id) => `/product/${id}`,
+    }),
     addBook: builder.mutation({
       query: (body) => ({
         url: "/books",
@@ -11,8 +13,9 @@ const bookApi = apiSlice.injectEndpoints({
         body,
       }),
     }),
+    
   }),
   overrideExisting: false,
 });
 
-export const { useGetBooksQuery, useAddBookMutation } = bookApi;
+export const { useGetBooksQuery, useAddBookMutation, useGetBookByIdQuery } = bookApi;
