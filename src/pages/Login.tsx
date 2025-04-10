@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useLoginMutation } from "../redux/features/api/endpoints/authApi";
 import { useForm } from "react-hook-form";
 
 const LoginPage = () => {
@@ -6,16 +7,25 @@ const LoginPage = () => {
     email: string;
     password: string;
   };
-  
+
+
+  const [login, { data, isLoading, isError, error }] = useLoginMutation();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<LoginFormValues>();
 
-  const onSubmit = (data: any) => {
-    console.log("Login form data:", data);
-    // Dispatch login mutation here
+  const onSubmit = async (formData: LoginFormValues) => {
+    try {
+      const res = await login(formData).unwrap();
+      console.log("✅ Login success:", res);
+
+  
+    } catch (err) {
+      console.error("❌ Login failed:", err);
+    }
   };
 
   return (
