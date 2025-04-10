@@ -1,6 +1,6 @@
-import About from '../pages/About';
+import About from '../pages/AboutPage';
 import AllProductsPage from '../pages/AllProductsPage';
-import Contact from '../pages/Contact';
+import Contact from '../pages/ContactPage';
 import HomePage from '../pages/HomePage';
 
 export const userPaths = [
