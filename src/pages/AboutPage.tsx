@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const AboutPage = () => {
   return (
     <section className="max-w-5xl mx-auto px-4 py-12">
@@ -16,7 +18,9 @@ const AboutPage = () => {
       </p>
 
       <div className="mt-10 text-center">
-        <button className="btn btn-primary">Browse Collection</button>
+        <Link to="/all-products">
+          <button className="btn btn-primary">Browse Collection</button>
+        </Link>
       </div>
     </section>
   );
