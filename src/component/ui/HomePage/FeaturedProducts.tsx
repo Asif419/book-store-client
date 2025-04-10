@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useGetBooksQuery } from "../../../redux/features/api/apiSlice";
+import { useGetBooksQuery } from "../../../redux/features/api/endpoints/bookApi";
 
 const FeaturedProducts = () => {
   const { data: books, isLoading, isError } = useGetBooksQuery();
