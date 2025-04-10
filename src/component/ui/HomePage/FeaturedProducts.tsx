@@ -2,18 +2,20 @@ import { Link } from "react-router-dom";
 import { useGetBooksQuery } from "../../../redux/features/api/endpoints/bookApi";
 
 const FeaturedProducts = () => {
-  const { data: books, isLoading, isError } = useGetBooksQuery();
-  console.log(books)
-if (isLoading) return <p>Loading...</p>;
-if (isError) return <p>Failed to load books.</p>;
+  const { data: response, isLoading, isError } = useGetBooksQuery();
+  const featuredBooks = response?.data?.slice(0, 6) ?? [];
+
+  console.log(featuredBooks)
+  if (isLoading) return <p>Loading...</p>;
+  if (isError) return <p>Failed to load books.</p>;
 
   // Dummy data for now
-  const featuredBooks = Array.from({ length: 6 }, (_, i) => ({
-    id: i + 1,
-    title: `Book Title ${i + 1}`,
-    author: `Author ${i + 1}`,
-    cover: `/images/book-${i + 1}.jpg`, 
-  }));
+  // const featuredBooks = Array.from({ length: 6 }, (_, i) => ({
+  //   id: i + 1,
+  //   title: `Book Title ${i + 1}`,
+  //   author: `Author ${i + 1}`,
+  //   cover: `/images/book-${i + 1}.jpg`,
+  // }));
 
   return (
     <section className="max-w-6xl mx-auto px-4 py-12">
@@ -25,7 +27,7 @@ if (isError) return <p>Failed to load books.</p>;
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {featuredBooks.map((book) => (
+        {featuredBooks.map((book: any) => (
           <div key={book.id} className="card bg-base-100 shadow-md">
             <figure>
               <img
