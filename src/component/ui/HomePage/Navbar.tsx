@@ -19,10 +19,9 @@ const Navbar = () => {
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li><a><NavLink to={'/users/home'}>Home</NavLink></a></li>
                         <li><a><NavLink to={'/users/all-books'}>Books</NavLink></a></li>
-                        <li><a>Books</a></li>
-                        <li><a>About</a></li>
-                        <li><a>Contact</a></li>
-                        <li><a>Login</a></li>
+                        <li><a><NavLink to={'about'}>About</NavLink></a></li>
+                        <li><a><NavLink to={'contact'}>Contact</NavLink></a></li>
+                        <button className="btn btn-outline btn-sm"><NavLink to={'/login'}>Login</NavLink></button>
                     </ul>
                 </div>
 
@@ -30,7 +29,7 @@ const Navbar = () => {
                 <ul className="menu menu-horizontal px-1 hidden md:flex">
                     <li><a><NavLink to={'/'}>Home</NavLink></a></li>
                     <li><a><NavLink to={'all-products'}>Books</NavLink></a></li>
-                    <li><a>About</a></li>
+                    <li><a><NavLink to={'about'}>About</NavLink></a></li>
                     <li><a><NavLink to={'contact'}>Contact</NavLink></a></li>
                     <button className="btn btn-outline btn-sm"><NavLink to={'/login'}>Login</NavLink></button>
                 </ul>
