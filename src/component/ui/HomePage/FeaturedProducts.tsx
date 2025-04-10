@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
+import { useGetBooksQuery } from "../../../redux/features/api/apiSlice";
 
 const FeaturedProducts = () => {
+  const { data: books, isLoading, isError } = useGetBooksQuery();
+  console.log(books)
+if (isLoading) return <p>Loading...</p>;
+if (isError) return <p>Failed to load books.</p>;
+
   // Dummy data for now
   const featuredBooks = Array.from({ length: 6 }, (_, i) => ({
     id: i + 1,
