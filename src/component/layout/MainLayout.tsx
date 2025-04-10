@@ -5,11 +5,15 @@ import Navbar from "../ui/HomePage/Navbar"
 const MainLayout = () => {
     return (
         <>
-            {/* Navbar */}
-            <Navbar></Navbar>
-            <Outlet />
-            {/* Navbar */}
-            <Footer></Footer>
+            <div className="min-h-screen flex flex-col">
+                {/* Navbar */}
+                <main className="flex-grow">
+                <Navbar></Navbar>
+                <Outlet />
+                </main>
+                {/* Navbar */}
+                <Footer></Footer>
+            </div>
         </>
     )
 }

@@ -6,6 +6,7 @@ import HomePage from "../pages/HomePage";
 import AllProductsPage from "../pages/AllProductsPage";
 import AboutPage from "../pages/AboutPage";
 import ContactPage from "../pages/ContactPage";
+import BookDetailsPage from "../pages/BookDetailsPage";
 
 
 const router = createBrowserRouter([
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
             {
                 path: 'contact',
                 element: <ContactPage />
+            },
+            {
+                path: 'book-details/:id',
+                element: <BookDetailsPage />
             }
         ]
     },
