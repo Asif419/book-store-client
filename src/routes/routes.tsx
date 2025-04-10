@@ -7,6 +7,7 @@ import AllProductsPage from "../pages/AllProductsPage";
 import AboutPage from "../pages/AboutPage";
 import ContactPage from "../pages/ContactPage";
 import BookDetailsPage from "../pages/BookDetailsPage";
+import AdminLayout from "../component/layout/AdminLayout";
 
 
 const router = createBrowserRouter([
@@ -36,6 +37,29 @@ const router = createBrowserRouter([
             }
         ]
     },
+    {
+        path: '/admin',
+        element: <AdminLayout />,
+        children: [
+            {
+                index:true,
+                element: <AboutPage />
+            },
+            {
+                path: 'profile',
+                element: <AllProductsPage />
+            },
+            {
+                path: 'products',
+                element: <ContactPage />
+            },
+            {
+                path: 'users',
+                element: <BookDetailsPage />
+            }
+        ]
+    },
+
     {
         path: '/login',
         element: <Login />
