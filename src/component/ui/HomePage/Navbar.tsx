@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 const Navbar = () => {
     return (
 
@@ -15,7 +17,8 @@ const Navbar = () => {
                         </svg>
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><a>Home</a></li>
+                        <li><a><NavLink to={'/users/home'}>Home</NavLink></a></li>
+                        <li><a><NavLink to={'/users/all-books'}>Books</NavLink></a></li>
                         <li><a>Books</a></li>
                         <li><a>About</a></li>
                         <li><a>Contact</a></li>
@@ -25,11 +28,11 @@ const Navbar = () => {
 
                 {/* Desktop Menu */}
                 <ul className="menu menu-horizontal px-1 hidden md:flex">
-                    <li><a>Home</a></li>
-                    <li><a>Books</a></li>
+                    <li><a><NavLink to={'/'}>Home</NavLink></a></li>
+                    <li><a><NavLink to={'all-products'}>Books</NavLink></a></li>
                     <li><a>About</a></li>
-                    <li><a>Contact</a></li>
-                    <button className="btn btn-outline btn-sm">Login</button>
+                    <li><a><NavLink to={'contact'}>Contact</NavLink></a></li>
+                    <button className="btn btn-outline btn-sm"><NavLink to={'/login'}>Login</NavLink></button>
                 </ul>
             </div>
         </nav>
