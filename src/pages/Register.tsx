@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useRegisterMutation } from "../redux/features/api/endpoints/authApi";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 type RegisterFormValues = {
   name: string;
@@ -9,6 +12,10 @@ type RegisterFormValues = {
 };
 
 const Register = () => {
+  const navigate = useNavigate();
+  const [registerUser] = useRegisterMutation();
+  const [registerError, setRegisterError] = useState<string | null>(null);
+
   const {
     register,
     handleSubmit,
@@ -16,9 +23,23 @@ const Register = () => {
     formState: { errors },
   } = useForm<RegisterFormValues>();
 
-  const onSubmit = (data: RegisterFormValues) => {
-    console.log("Registration form data:", data);
-    // Dispatch register mutation here
+  const onSubmit = async (data: RegisterFormValues) => {
+    setRegisterError(null);
+    try {
+      const payload = {
+        name: data.name,
+        email: data.email,
+        password: data.password,
+        role: "user",
+      };
+      const res = await registerUser(payload).unwrap();
+      console.log("Registration success:", res);
+      navigate("/login");
+    } catch (err: any) {
+      console.error("Registration error:", err);
+      const message = err?.data?.message || "Registration failed. Please try again.";
+      setRegisterError(message);
+    }
   };
 
   const password = watch("password");
@@ -27,6 +48,10 @@ const Register = () => {
     <section className="flex justify-center items-center min-h-screen px-4">
       <div className="w-full max-w-md bg-base-100 shadow-md rounded-lg p-8 space-y-6">
         <h2 className="text-2xl font-bold text-center">Create an Account</h2>
+
+        {registerError && (
+          <p className="text-error text-sm bg-base-200 p-2 rounded">{registerError}</p>
+        )}
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <input

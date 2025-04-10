@@ -46,7 +46,7 @@ const Navbar = () => {
                 </div>
 
                 {/* Desktop Menu */}
-                <ul className="menu menu-horizontal px-1 hidden md:flex">
+                <ul className="menu menu-horizontal px-1 hidden md:flex items-center">
                     <li><NavLink to={'/'}>Home</NavLink></li>
                     <li><NavLink to={'all-products'}>Books</NavLink></li>
                     <li><NavLink to={'about'}>About</NavLink></li>
