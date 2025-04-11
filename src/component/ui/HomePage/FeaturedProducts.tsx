@@ -7,7 +7,14 @@ const FeaturedProducts = () => {
   const { data: response, isLoading, isError } = useGetBooksQuery();
   const featuredBooks = response?.data?.slice(0, 6) ?? [];
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <span className="loading loading-spinner loading-lg text-primary"></span>
+      </div>
+    );
+  }
+  
   if (isError) return <p>Failed to load books.</p>;
 
   // Dummy data for now

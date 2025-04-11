@@ -23,6 +23,14 @@ const LoginPage = () => {
     formState: { errors },
   } = useForm<LoginFormValues>();
 
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <span className="loading loading-spinner loading-lg text-primary"></span>
+      </div>
+    );
+  }
+
   const onSubmit = async (formData: LoginFormValues) => {
     try {
       const res = await login(formData).unwrap();

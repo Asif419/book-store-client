@@ -7,6 +7,7 @@ export const apiSlice = createApi({
     baseUrl: "https://bookshopbackend-henna.vercel.app/api",
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as RootState).auth.token;
+      console.log("TOKEN IN HEADER:", token);
       if (token) {
         headers.set("Authorization", `Bearer ${token}`);
       }
