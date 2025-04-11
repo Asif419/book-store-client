@@ -20,7 +20,9 @@ const Navbar = () => {
 
         <nav className="navbar bg-base-100 shadow-md">
             <div className="flex-1">
-                <a className="btn btn-ghost normal-case text-xl">📚 BookShop</a>
+                <NavLink to={'/'}>
+                    <a className="btn btn-ghost normal-case text-xl">📚 BookShop</a>
+                </NavLink>
             </div>
 
             <div className="flex-none">
@@ -38,8 +40,15 @@ const Navbar = () => {
                         <li><NavLink to={'contact'}>Contact</NavLink></li>
                         {user ? (
                             <li><NavLink to="profile">Profile</NavLink></li>
+                        ) : null}
+                        {user ? (
+                            <li>
+                                <button onClick={handleLogout} className="btn btn-ghost btn-sm">Logout</button>
+                            </li>
                         ) : (
-                            <button className="btn btn-outline btn-sm"><NavLink to={'/login'}>Login</NavLink></button>
+                            <li>
+                                <NavLink to="/login">Login</NavLink>
+                            </li>
                         )}
                     </ul>
                 </div>
@@ -54,8 +63,8 @@ const Navbar = () => {
                         <div className="dropdown dropdown-end">
                             <label tabIndex={0} className="btn btn-outline btn-sm m-1">Profile</label>
                             <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                                <li><NavLink to="/admin">Dashboard</NavLink></li>
-                                <li><NavLink to="/profile">Profile</NavLink></li>
+                                <li><NavLink to="/user/orders">Orders</NavLink></li>
+                                <li><NavLink to="/user/settings">Settings</NavLink></li>
                                 <li><button onClick={handleLogout}>Logout</button></li>
                             </ul>
                         </div>

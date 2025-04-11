@@ -9,7 +9,8 @@ import ContactPage from "../pages/ContactPage";
 import BookDetailsPage from "../pages/BookDetailsPage";
 import AdminLayout from "../component/layout/AdminLayout";
 import CheckoutPage from "../pages/CheckoutPage";
-import UserRoute from "./guards/userRoute";
+import UserRoute from "./guards/UserRoute";
+import UserLayout from "../component/layout/UserLayout";
 
 
 const router = createBrowserRouter([
@@ -41,13 +42,6 @@ const router = createBrowserRouter([
                 path: 'book-details/:id',
                 element: <BookDetailsPage />
             },
-            {
-                path: 'checkout/:id',
-                element:
-                    <UserRoute>
-                        <CheckoutPage />
-                    </UserRoute>
-            }
         ]
     },
     {
@@ -72,7 +66,34 @@ const router = createBrowserRouter([
             }
         ]
     },
-
+    {
+        path: '/user',
+        element: <UserLayout />,
+        children: [
+            {
+                index: true,
+                path: 'orders',
+                element:
+                    <UserRoute>
+                        <CheckoutPage />
+                    </UserRoute>
+            },
+            {
+                path: 'dashboard/:id',
+                element:
+                    <UserRoute>
+                        <CheckoutPage />
+                    </UserRoute>
+            },
+            {
+                path: 'checkout/:id',
+                element:
+                    <UserRoute>
+                        <CheckoutPage />
+                    </UserRoute>
+            },
+        ]
+    },
     {
         path: '/login',
         element: <Login />

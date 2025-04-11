@@ -41,7 +41,7 @@ const BookDetailsPage = () => {
             className="btn btn-primary"
             disabled={!book.data.inStock || user?.role !== "user"}
             onClick={() => {
-              navigate(`/checkout/${book.data._id}`);
+              navigate(`/user/checkout/${book.data._id}`);
             }}
           >
             {user?.role !== "user"
