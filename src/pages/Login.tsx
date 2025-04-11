@@ -12,7 +12,7 @@ const LoginPage = () => {
   };
 
 
-  const [login, { data, isLoading, isError, error }] = useLoginMutation();
+  const [login, { isLoading }] = useLoginMutation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [loginError, setLoginError] = useState<string | null>(null);

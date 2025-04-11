@@ -23,9 +23,9 @@ const FilteringComponent = () => {
     return result;
   };
 
-  const filterObject =
-    !isLoading &&
-    getUniqueValuesFromFields(data.data, ["title", "author", "category"]);
+  const filterObject = isLoading
+  ? { title: [], author: [], category: [] }
+  : getUniqueValuesFromFields(data.data, ["title", "author", "category"]);
 
   return (
     <div>

@@ -14,7 +14,7 @@ type FilterOptionsProps = {
 const FilteringOptions = ({ field, value }: FilterOptionsProps) => {
   const dispatch = useAppDispatch();
 
-  const handleFilter = (e: React.MouseEvent<HTMLElement>) => {
+  const handleFilter = () => {
     if (field === "title") {
       dispatch(setTitle(value));
       dispatch(setCategory(""));
