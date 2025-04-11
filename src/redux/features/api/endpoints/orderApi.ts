@@ -9,8 +9,15 @@ const orderApi = apiSlice.injectEndpoints({
         body: { productId, quantity },
       }),
     }),
+    getAllOrders: builder.query({
+      query: () => ({
+        url: "/order",
+        method: "GET",
+      }),
+      providesTags: ["product"],
+    }),
   }),
   overrideExisting: false,
 });
 
-export const { usePlaceOrderMutation } = orderApi;
+export const { usePlaceOrderMutation, useGetAllOrdersQuery } = orderApi;

@@ -12,97 +12,100 @@ import CheckoutPage from "../pages/CheckoutPage";
 import UserRoute from "./guards/UserRoute";
 import UserLayout from "../component/layout/UserLayout";
 import AllProducts from "../pages/AllProducts";
-
+import ProductsPage from "../pages/ProductsPage";
 
 const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <App />,
-        children: [
-            {
-                index: true,
-                element: <HomePage />
-            },
-            {
-                path: 'all-products',
-                element: <AllProducts />
-            },
-            {
-                path: 'about',
-                element: <AboutPage />
-            },
-            {
-                path: 'contact',
-                element: <ContactPage />
-            },
-            {
-                path: 'profile',
-                element: <ContactPage />
-            },
-            {
-                path: 'book-details/:id',
-                element: <BookDetailsPage />
-            },
-        ]
-    },
-    {
-        path: '/admin',
-        element: <AdminLayout />,
-        children: [
-            {
-                index: true,
-                element: <AboutPage />
-            },
-            {
-                path: 'profile',
-                element: <AllProductsPage />
-            },
-            {
-                path: 'products',
-                element: <ContactPage />
-            },
-            {
-                path: 'users',
-                element: <BookDetailsPage />
-            }
-        ]
-    },
-    {
-        path: '/user',
-        element: <UserLayout />,
-        children: [
-            {
-                index: true,
-                path: 'orders',
-                element:
-                    <UserRoute>
-                        <CheckoutPage />
-                    </UserRoute>
-            },
-            {
-                path: 'dashboard/:id',
-                element:
-                    <UserRoute>
-                        <CheckoutPage />
-                    </UserRoute>
-            },
-            {
-                path: 'checkout/:id',
-                element:
-                    <UserRoute>
-                        <CheckoutPage />
-                    </UserRoute>
-            },
-        ]
-    },
-    {
-        path: '/login',
-        element: <Login />
-    },
-    {
-        path: '/register',
-        element: <Register />
-    },
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        index: true,
+        element: <HomePage />,
+      },
+      {
+        path: "all-products",
+        element: <AllProducts />,
+      },
+      {
+        path: "about",
+        element: <AboutPage />,
+      },
+      {
+        path: "contact",
+        element: <ContactPage />,
+      },
+      {
+        path: "profile",
+        element: <ContactPage />,
+      },
+      {
+        path: "book-details/:id",
+        element: <BookDetailsPage />,
+      },
+    ],
+  },
+  {
+    path: "/admin",
+    element: <AdminLayout />,
+    children: [
+      {
+        index: true,
+        element: <AboutPage />,
+      },
+      {
+        path: "profile",
+        element: <AllProductsPage />,
+      },
+      {
+        path: "products",
+        element: <ProductsPage />,
+      },
+      {
+        path: "users",
+        element: <BookDetailsPage />,
+      },
+    ],
+  },
+  {
+    path: "/user",
+    element: <UserLayout />,
+    children: [
+      {
+        index: true,
+        path: "orders",
+        element: (
+          <UserRoute>
+            <CheckoutPage />
+          </UserRoute>
+        ),
+      },
+      {
+        path: "dashboard/:id",
+        element: (
+          <UserRoute>
+            <CheckoutPage />
+          </UserRoute>
+        ),
+      },
+      {
+        path: "checkout/:id",
+        element: (
+          <UserRoute>
+            <CheckoutPage />
+          </UserRoute>
+        ),
+      },
+    ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
+  },
 ]);
 
 export default router;
