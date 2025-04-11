@@ -20,9 +20,21 @@ const BookDetailsPage = () => {
         </div>
         <div className="w-full md:w-2/3">
           <h1 className="text-3xl font-bold mb-2">{book.data.title}</h1>
-          <h2 className="text-xl text-gray-600 mb-4">by {book.data.author}</h2>
+          <h2 className="text-xl text-gray-600 mb-2">by {book.data.author}</h2>
+          <p className="text-lg text-green-700 font-semibold mb-2">Price: ${book.data.price}</p>
+          <p className="text-sm text-gray-500 mb-2">Category: {book.data.category}</p>
           <p className="text-base text-gray-700 mb-6">{book.data.description || "No description available."}</p>
-          <button className="btn btn-primary">Buy Now</button>
+          <button
+            className="btn btn-primary"
+            disabled={!book.data.inStock}
+            onClick={() => {
+              if (book.data.inStock) {
+                window.location.href = "/checkout";
+              }
+            }}
+          >
+            {book.data.inStock ? "Buy Now" : "Out of Stock"}
+          </button>
         </div>
       </div>
     </section>
