@@ -10,9 +10,17 @@ const BookDetailsPage = () => {
 
   const navigate = useNavigate();
 
-  if (isLoading) return <p className="text-center py-10">Loading book details...</p>;
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <span className="loading loading-spinner loading-lg text-primary"></span>
+      </div>
+    );
+  }
+  
   if (isError || !book) return <p className="text-center py-10 text-error">Failed to load book.</p>;
 
+  
   return (
     <section className="max-w-4xl mx-auto px-4 py-12">
       <div className="flex flex-col md:flex-row gap-6">
@@ -33,7 +41,7 @@ const BookDetailsPage = () => {
             className="btn btn-primary"
             disabled={!book.data.inStock || user?.role !== "user"}
             onClick={() => {
-              navigate(`/checkout/${book.data._id}`);
+              navigate(`/user/checkout/${book.data._id}`);
             }}
           >
             {user?.role !== "user"

@@ -2,16 +2,25 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useAppSelector } from "../redux/hook";
 import { useState } from "react";
 import { useGetBookByIdQuery } from "../redux/features/api/endpoints/bookApi";
+import { toast } from "react-hot-toast";
+import { usePlaceOrderMutation } from "../redux/features/api/endpoints/orderApi";
 
 const CheckoutPage = () => {
-  const { id } = useParams();
   const navigate = useNavigate();
+  const { id } = useParams();
   const { data: book, isLoading } = useGetBookByIdQuery(id);
+  const [placeOrder] = usePlaceOrderMutation();
   const user = useAppSelector((state) => state.auth.user);
 
   const [quantity, setQuantity] = useState(1);
 
-  console.log(book, user)
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <span className="loading loading-spinner loading-lg text-primary"></span>
+      </div>
+    );
+  }
 
   if (!book || !user) {
     return <p className="text-center py-10">Invalid access. No product or user info found.</p>;
@@ -20,9 +29,14 @@ const CheckoutPage = () => {
   const totalPrice = (quantity * book.data.price).toFixed(2);
 
   const handleOrder = () => {
-    // TODO: integrate payment + order API
-    alert("Order placed successfully (mock)!");
-    navigate("/");
+    try {
+      const res = placeOrder({ productId: book.data._id, quantity }).unwrap();
+      toast.success("Order placed successfully!");
+      navigate("/");
+    } catch (err: any) {
+      console.error("Order failed:", err);
+      toast.error(err?.data?.message || "Failed to place order.");
+    }
   };
 
   return (
