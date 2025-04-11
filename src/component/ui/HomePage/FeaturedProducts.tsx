@@ -1,13 +1,21 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useGetBooksQuery } from "../../../redux/features/api/endpoints/bookApi";
 
 const FeaturedProducts = () => {
-  // Dummy data for now
-  const featuredBooks = Array.from({ length: 6 }, (_, i) => ({
-    id: i + 1,
-    title: `Book Title ${i + 1}`,
-    author: `Author ${i + 1}`,
-    cover: `/images/book-${i + 1}.jpg`, 
-  }));
+  const navigate = useNavigate();
+
+  const { data: response, isLoading, isError } = useGetBooksQuery();
+  const featuredBooks = response?.data?.slice(0, 6) ?? [];
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <span className="loading loading-spinner loading-lg text-primary"></span>
+      </div>
+    );
+  }
+  
+  if (isError) return <p>Failed to load books.</p>;
 
   return (
     <section className="max-w-6xl mx-auto px-4 py-12">
@@ -19,7 +27,7 @@ const FeaturedProducts = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {featuredBooks.map((book) => (
+        {featuredBooks.map((book: any) => (
           <div key={book.id} className="card bg-base-100 shadow-md">
             <figure>
               <img
@@ -32,7 +40,7 @@ const FeaturedProducts = () => {
               <h3 className="text-lg font-semibold">{book.title}</h3>
               <p className="text-sm text-gray-500">{book.author}</p>
               <div className="card-actions justify-end">
-                <button className="btn btn-primary btn-sm">View</button>
+                <button onClick={() => navigate(`book-details/${book._id}`)} className="btn btn-primary btn-sm">View</button>
               </div>
             </div>
           </div>

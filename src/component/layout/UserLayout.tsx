@@ -1,14 +1,14 @@
 import { Outlet } from "react-router-dom"
 import Footer from "../ui/HomePage/Footer"
-import Navbar from "../ui/HomePage/Navbar"
+import UserNavbar from "../ui/HomePage/UserNavbar"
 
-const MainLayout = () => {
+const UserLayout = () => {
     return (
         <>
             <div className="min-h-screen flex flex-col">
                 {/* Navbar */}
                 <main className="flex-grow">
-                <Navbar></Navbar>
+                <UserNavbar></UserNavbar>
                 <Outlet />
                 </main>
                 {/* Navbar */}
@@ -18,4 +18,4 @@ const MainLayout = () => {
     )
 }
 
-export default MainLayout
+export default UserLayout
