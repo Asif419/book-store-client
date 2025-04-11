@@ -1,7 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../../redux/hook";
-import { logout } from "../../../redux/features/api/endpoints/authSlice";
-
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
     const user = useAppSelector((state) => state.auth.user);
@@ -19,9 +16,7 @@ const Navbar = () => {
 
         <nav className="navbar bg-base-100 shadow-md">
             <div className="flex-1">
-                <NavLink to={'/'}>
-                    📚 BookShop
-                </NavLink>
+                <a className="btn btn-ghost normal-case text-xl">📚 BookShop</a>
             </div>
 
             <div className="flex-none">
@@ -52,10 +47,12 @@ const Navbar = () => {
                                 <NavLink to="/login">Login</NavLink>
                             </li>
                         )}
+
                     </ul>
                 </div>
 
                 {/* Desktop Menu */}
+
                 <ul className="menu menu-horizontal px-1 hidden md:flex items-center">
                     <li><NavLink to={'/'}>Home</NavLink></li>
                     <li><NavLink to={'all-products'}>Books</NavLink></li>
@@ -81,6 +78,7 @@ const Navbar = () => {
                     ) : (
                         <button className="btn btn-outline btn-sm"><NavLink to={'/login'}>Login</NavLink></button>
                     )}
+
                 </ul>
             </div>
         </nav>
