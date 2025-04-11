@@ -42,7 +42,6 @@ const router = createBrowserRouter([
                 element: <BookDetailsPage />
             },
             {
-                //? private route, is it okay to be here
                 path: 'checkout/:id',
                 element:
                     <UserRoute>
