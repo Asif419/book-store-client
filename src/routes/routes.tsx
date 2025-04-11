@@ -11,6 +11,7 @@ import AdminLayout from "../component/layout/AdminLayout";
 import CheckoutPage from "../pages/CheckoutPage";
 import UserRoute from "./guards/UserRoute";
 import UserLayout from "../component/layout/UserLayout";
+import AllProducts from "../pages/AllProducts";
 
 
 const router = createBrowserRouter([
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'all-products',
-                element: <AllProductsPage />
+                element: <AllProducts />
             },
             {
                 path: 'about',

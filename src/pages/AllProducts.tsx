@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useGetALlProductsQuery } from "../redux/features/api/apiSlice";
 import ProductCard, { TProduct } from "../components/ProductCard";
 import FilteringSideBar from "../components/FilteringSideBar";
 import { useAppDispatch, useAppSelector } from "../redux/hook";
@@ -9,13 +8,14 @@ import {
   setSearchTerm,
   setTitle,
 } from "../redux/features/api/filterSlice";
+import { useGetAllProductsQuery } from "../redux/features/api/endpoints/productApi";
 
 const AllProducts = () => {
   const [searchValue, setSearchValue] = useState("");
 
   const filter = useAppSelector((store) => store.filter);
 
-  const { data, isError, isLoading } = useGetALlProductsQuery(filter, {
+  const { data, isError, isLoading } = useGetAllProductsQuery(filter, {
     pollingInterval: 30000,
     refetchOnFocus: true,
     refetchOnMountOrArgChange: true,
@@ -32,7 +32,7 @@ const AllProducts = () => {
   };
 
   return (
-    <div className="px-4 md:px-5 lg:px-6 mt-6 md:mt-8 lg:mt-10">
+    <div className="max-w-5xl mx-auto px-4 py-12">
       <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium">
         All Books – Explore Our Collection
       </h1>

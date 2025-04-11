@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useGetALlProductsQuery } from "../redux/features/api/apiSlice";
+import { useGetAllProductsQuery } from "../redux/features/api/endpoints/productApi";
 import FilteringOptions from "./FilteringOptions";
 
 const FilteringComponent = () => {
-  const { data, isLoading } = useGetALlProductsQuery("", {
+  const { data, isLoading } = useGetAllProductsQuery("", {
     pollingInterval: 30000,
     refetchOnFocus: true,
     refetchOnMountOrArgChange: true,
