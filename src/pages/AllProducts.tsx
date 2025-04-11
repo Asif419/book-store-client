@@ -15,7 +15,7 @@ const AllProducts = () => {
 
   const filter = useAppSelector((store) => store.filter);
 
-  const { data, isError, isLoading, refetch } = useGetALlProductsQuery(filter, {
+  const { data, isError, isLoading } = useGetALlProductsQuery(filter, {
     pollingInterval: 30000,
     refetchOnFocus: true,
     refetchOnMountOrArgChange: true,

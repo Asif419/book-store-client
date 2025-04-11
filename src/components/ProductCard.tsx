@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export type TProduct = {
   _id: string;
   title: string;
@@ -13,7 +15,7 @@ export type TProduct = {
 };
 
 const ProductCard = ({ product }: { product: TProduct }) => {
-  const { author, title, category, price } = product;
+  const { _id, author, title, category, price } = product;
   return (
     <div className="bg-base-200">
       <div className="px-4 py-6 rounded-lg">
@@ -24,7 +26,9 @@ const ProductCard = ({ product }: { product: TProduct }) => {
           <p className="text-sm md:text-base">Author : {author}</p>
           <p className="text-sm md:text-base">Category : {category}</p>
           <p className="text-sm md:text-base">Price : {price}</p>
-          <button className="btn btn-primary">View Details</button>
+          <Link to={`/book-details/${_id}`} className="btn btn-primary">
+            View Details
+          </Link>
         </div>
       </div>
     </div>

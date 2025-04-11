@@ -3,7 +3,7 @@ import { useGetALlProductsQuery } from "../redux/features/api/apiSlice";
 import FilteringOptions from "./FilteringOptions";
 
 const FilteringComponent = () => {
-  const { data, isError, isLoading, refetch } = useGetALlProductsQuery("", {
+  const { data, isLoading } = useGetALlProductsQuery("", {
     pollingInterval: 30000,
     refetchOnFocus: true,
     refetchOnMountOrArgChange: true,
