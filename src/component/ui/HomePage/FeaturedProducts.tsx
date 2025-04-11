@@ -17,14 +17,6 @@ const FeaturedProducts = () => {
   
   if (isError) return <p>Failed to load books.</p>;
 
-  // Dummy data for now
-  // const featuredBooks = Array.from({ length: 6 }, (_, i) => ({
-  //   id: i + 1,
-  //   title: `Book Title ${i + 1}`,
-  //   author: `Author ${i + 1}`,
-  //   cover: `/images/book-${i + 1}.jpg`,
-  // }));
-
   return (
     <section className="max-w-6xl mx-auto px-4 py-12">
       <div className="flex justify-between items-center mb-6">
