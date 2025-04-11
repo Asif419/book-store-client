@@ -30,6 +30,7 @@ const BookDetailsPage = () => {
             onClick={() => {
               if (book.data.inStock) {
                 window.location.href = "/checkout";
+                // problem is here
               }
             }}
           >

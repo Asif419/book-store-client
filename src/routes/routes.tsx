@@ -8,6 +8,7 @@ import AboutPage from "../pages/AboutPage";
 import ContactPage from "../pages/ContactPage";
 import BookDetailsPage from "../pages/BookDetailsPage";
 import AdminLayout from "../component/layout/AdminLayout";
+import CheckoutPage from "../pages/CheckoutPage";
 
 
 const router = createBrowserRouter([
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
             {
                 path: 'book-details/:id',
                 element: <BookDetailsPage />
+            },
+            {
+                path: 'checkout',
+                element: <CheckoutPage />
             }
         ]
     },

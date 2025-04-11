@@ -15,8 +15,6 @@ const Navbar = () => {
         navigate("/login");
     };
 
-    console.log(user)
-
     return (
 
         <nav className="navbar bg-base-100 shadow-md">
