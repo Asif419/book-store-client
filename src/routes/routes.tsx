@@ -7,6 +7,9 @@ import AllProductsPage from "../pages/AllProductsPage";
 import AboutPage from "../pages/AboutPage";
 import ContactPage from "../pages/ContactPage";
 import BookDetailsPage from "../pages/BookDetailsPage";
+import AdminLayout from "../component/layout/AdminLayout";
+import CheckoutPage from "../pages/CheckoutPage";
+import UserRoute from "./guards/userRoute";
 
 
 const router = createBrowserRouter([
@@ -31,11 +34,45 @@ const router = createBrowserRouter([
                 element: <ContactPage />
             },
             {
+                path: 'profile',
+                element: <ContactPage />
+            },
+            {
                 path: 'book-details/:id',
+                element: <BookDetailsPage />
+            },
+            {
+                path: 'checkout/:id',
+                element:
+                    <UserRoute>
+                        <CheckoutPage />
+                    </UserRoute>
+            }
+        ]
+    },
+    {
+        path: '/admin',
+        element: <AdminLayout />,
+        children: [
+            {
+                index: true,
+                element: <AboutPage />
+            },
+            {
+                path: 'profile',
+                element: <AllProductsPage />
+            },
+            {
+                path: 'products',
+                element: <ContactPage />
+            },
+            {
+                path: 'users',
                 element: <BookDetailsPage />
             }
         ]
     },
+
     {
         path: '/login',
         element: <Login />
