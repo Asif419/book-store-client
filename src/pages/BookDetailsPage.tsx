@@ -1,9 +1,14 @@
 import { useParams } from "react-router-dom";
 import { useGetBookByIdQuery } from "../redux/features/api/endpoints/bookApi";
+import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "../redux/hook";
 
 const BookDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
   const { data: book, isLoading, isError } = useGetBookByIdQuery(id);
+  const user = useAppSelector((state) => state.auth.user);
+
+  const navigate = useNavigate();
 
   if (isLoading) return <p className="text-center py-10">Loading book details...</p>;
   if (isError || !book) return <p className="text-center py-10 text-error">Failed to load book.</p>;
@@ -26,15 +31,16 @@ const BookDetailsPage = () => {
           <p className="text-base text-gray-700 mb-6">{book.data.description || "No description available."}</p>
           <button
             className="btn btn-primary"
-            disabled={!book.data.inStock}
+            disabled={!book.data.inStock || user?.role !== "user"}
             onClick={() => {
-              if (book.data.inStock) {
-                window.location.href = "/checkout";
-                // problem is here
-              }
+              navigate(`/checkout/${book.data._id}`);
             }}
           >
-            {book.data.inStock ? "Buy Now" : "Out of Stock"}
+            {user?.role !== "user"
+              ? "User can order"
+              : book.data.inStock
+                ? "Buy Now"
+                : "Out of Stock"}
           </button>
         </div>
       </div>
