@@ -17,8 +17,9 @@ const ResetPassword = () => {
   const onSubmit = async (data: TResetForm) => {
     if (data.newPassword !== data.confirmPassword) {
       return toast.error("New passwords do not match!");
+    }else if (data.newPassword.length < 6) {
+      return toast.error("At least 6 letter needed");
     }
-    console.log(data.newPassword, data.confirmPassword)
 
     try {
       const response = await resetPassword({
