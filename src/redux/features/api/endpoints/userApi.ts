@@ -9,7 +9,24 @@ const userApi = apiSlice.injectEndpoints({
         body,
       }),
     }),
+    getAllUser: builder.query({
+      query: () => ({
+        url: "/user",
+        method: "GET",
+      }),
+    }),
+    blockUser: builder.mutation({
+      query: (userId) => ({
+        url: `/user/${userId}`,
+        method: "PATCH",
+      }),
+      invalidatesTags: ["user"],
+    }),
   }),
 });
 
-export const { useResetPasswordMutation } = userApi;
+export const {
+  useResetPasswordMutation,
+  useGetAllUserQuery,
+  useBlockUserMutation,
+} = userApi;

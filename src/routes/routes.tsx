@@ -18,8 +18,8 @@ import AdminRoute from "./guards/AdminRoute";
 import UserProfile from "../component/ui/UserDashboard/UserProfile";
 import UserOrders from "../component/ui/UserDashboard/UserOrders";
 import ResetPassword from "../component/ui/UserDashboard/ResetPassword";
-import UserOrders from "../component/ui/UserDashboard/UserOrders";
 import NotFoundPage from "../pages/NotFoundpage";
+import UserManagement from "../pages/UserManagement";
 
 const router = createBrowserRouter([
   {
@@ -83,7 +83,7 @@ const router = createBrowserRouter([
         element: (
           <AdminRoute>
             {" "}
-            <BookDetailsPage />{" "}
+            <UserManagement />{" "}
           </AdminRoute>
         ),
       },
