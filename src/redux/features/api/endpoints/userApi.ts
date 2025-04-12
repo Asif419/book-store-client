@@ -8,8 +8,27 @@ const userApi = apiSlice.injectEndpoints({
         method: "POST",
         body,
       }),
+      invalidatesTags: ["user"],
+    }),
+    getAllUser: builder.query({
+      query: () => ({
+        url: "/user",
+        method: "GET",
+      }),
+      providesTags: ["user"],
+    }),
+    blockUser: builder.mutation({
+      query: (userId) => ({
+        url: `/user/${userId}`,
+        method: "PATCH",
+      }),
+      invalidatesTags: ["user"],
     }),
   }),
 });
 
-export const { useResetPasswordMutation } = userApi;
+export const {
+  useResetPasswordMutation,
+  useGetAllUserQuery,
+  useBlockUserMutation,
+} = userApi;

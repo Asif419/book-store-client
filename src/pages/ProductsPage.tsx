@@ -19,9 +19,8 @@ const ProductsPage = () => {
     }
   );
 
+
   // handle add book
-
-
 
   return (
     <div className="pt-4 md:pt-6 lg:pt-10">

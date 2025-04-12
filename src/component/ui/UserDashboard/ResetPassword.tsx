@@ -17,7 +17,7 @@ const ResetPassword = () => {
   const onSubmit = async (data: TResetForm) => {
     if (data.newPassword !== data.confirmPassword) {
       return toast.error("New passwords do not match!");
-    }else if (data.newPassword.length < 6) {
+    } else if (data.newPassword.length < 6) {
       return toast.error("At least 6 letter needed");
     }
 
@@ -36,7 +36,9 @@ const ResetPassword = () => {
   return (
     <div className="flex justify-center items-center h-[50vh] px-4">
       <div className="card w-full max-w-md bg-base-100 shadow-lg p-6">
-        <h2 className="text-2xl font-bold mb-4 text-center">🔐 Reset Password</h2>
+        <h2 className="text-2xl font-bold mb-4 text-center">
+          🔐 Reset Password
+        </h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <input
             type="password"
@@ -57,11 +59,11 @@ const ResetPassword = () => {
             {...register("confirmPassword", { required: true })}
           />
 
-          {watch("newPassword") && watch("confirmPassword") &&
+          {watch("newPassword") &&
+            watch("confirmPassword") &&
             watch("newPassword") !== watch("confirmPassword") && (
               <p className="text-red-500 text-sm">Passwords do not match</p>
-            )
-          }
+            )}
 
           <button
             type="submit"
