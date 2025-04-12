@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { apiSlice } from "../apiSlice";
 
 const orderApi = apiSlice.injectEndpoints({
@@ -27,7 +28,7 @@ const orderApi = apiSlice.injectEndpoints({
     updateOrder: builder.mutation({
       query: ({ id, ...payload }) => ({
         url: `/order/${id}`,
-        method: "POST",
+        method: "PUT",
         body: payload,
       }),
       invalidatesTags: ["order"],

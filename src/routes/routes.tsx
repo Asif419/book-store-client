@@ -14,6 +14,11 @@ import AllProducts from "../pages/AllProducts";
 import ProductsPage from "../pages/ProductsPage";
 import OrderManagePage from "../pages/OrderManagePage";
 import AdminProfile from "../pages/AdminProfile";
+import AdminRoute from "./guards/AdminRoute";
+import UserOrders from "../component/ui/UserDashboard/UserOrders";
+import UserProfile from "../component/ui/UserDashboard/UserProfile";
+import ResetPassword from "../component/ui/UserDashboard/ResetPassword";
+import NotFoundPage from "../pages/NotFoundpage";
 
 const router = createBrowserRouter([
   {
@@ -48,7 +53,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: <AdminRoute> <AdminLayout /> </AdminRoute>,
+    element: (
+      <AdminRoute>
+        {" "}
+        <AdminLayout />{" "}
+      </AdminRoute>
+    ),
     children: [
       {
         index: true,
@@ -60,11 +70,21 @@ const router = createBrowserRouter([
       },
       {
         path: "products",
-        element: <AdminRoute> <ProductsPage /> </AdminRoute>,
+        element: (
+          <AdminRoute>
+            {" "}
+            <ProductsPage />{" "}
+          </AdminRoute>
+        ),
       },
       {
         path: "users",
-        element: <AdminRoute> <BookDetailsPage /> </AdminRoute> ,
+        element: (
+          <AdminRoute>
+            {" "}
+            <BookDetailsPage />{" "}
+          </AdminRoute>
+        ),
       },
     ],
   },
@@ -117,8 +137,8 @@ const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <NotFoundPage />
-  }
+    element: <NotFoundPage />,
+  },
 ]);
 
 export default router;
