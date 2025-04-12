@@ -27,7 +27,7 @@ const OrderManagePage = () => {
         )}
         {/* if data available */}
         {!isLoading && data?.data?.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {data.data.map((order: TOrder) => (
               <OrderListCard key={order._id} order={order}></OrderListCard>
             ))}
@@ -43,7 +43,6 @@ const OrderManagePage = () => {
           <p className="text-yellow-500">No Order available right now.</p>
         )}
       </div>
-      <div></div>
     </div>
   );
 };
