@@ -10,8 +10,6 @@ const UserManagement = () => {
     refetchOnMountOrArgChange: true,
     refetchOnReconnect: true,
   });
-
-  console.log(data);
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
       <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-center">

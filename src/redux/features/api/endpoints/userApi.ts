@@ -8,12 +8,14 @@ const userApi = apiSlice.injectEndpoints({
         method: "POST",
         body,
       }),
+      invalidatesTags: ["user"],
     }),
     getAllUser: builder.query({
       query: () => ({
         url: "/user",
         method: "GET",
       }),
+      providesTags: ["user"],
     }),
     blockUser: builder.mutation({
       query: (userId) => ({
