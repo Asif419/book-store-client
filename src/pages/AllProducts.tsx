@@ -33,7 +33,7 @@ const AllProducts = () => {
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
-      <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium">
+      <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center">
         All Books – Explore Our Collection
       </h1>
       <p className="text-sm md:text-base lg:text-lg md:mt-2 w-full md:w-3/4">
