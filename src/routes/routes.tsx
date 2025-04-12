@@ -14,6 +14,11 @@ import AllProducts from "../pages/AllProducts";
 import ProductsPage from "../pages/ProductsPage";
 import OrderManagePage from "../pages/OrderManagePage";
 import AdminProfile from "../pages/AdminProfile";
+import AdminRoute from "./guards/AdminRoute";
+import UserProfile from "../component/ui/UserDashboard/UserProfile";
+import ResetPassword from "../component/ui/UserDashboard/ResetPassword";
+import UserOrders from "../component/ui/UserDashboard/UserOrders";
+import NotFoundPage from "../pages/NotFoundpage";
 
 const router = createBrowserRouter([
   {
