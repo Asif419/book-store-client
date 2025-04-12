@@ -20,8 +20,33 @@ const productApi = apiSlice.injectEndpoints({
       }),
       providesTags: ["product"],
     }),
+    createProduct: builder.query({
+      query: () => ({
+        url: "/product",
+        method: "GET",
+      }),
+      providesTags: ["product"],
+    }),
+    deleteProduct: builder.mutation({
+      query: (id) => ({
+        url: `/product/${id}`,
+        method: "DELETE",
+      }),
+    }),
+    updateProduct: builder.mutation({
+      query: ({ id, ...payload }) => ({
+        url: `/product/${id}`,
+        method: "POST",
+        body: payload,
+      }),
+    }),
   }),
   overrideExisting: false,
 });
 
-export const { useGetAllProductsQuery } = productApi;
+export const {
+  useGetAllProductsQuery,
+  useCreateProductQuery,
+  useUpdateProductMutation,
+  useDeleteProductMutation,
+} = productApi;

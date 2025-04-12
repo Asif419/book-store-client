@@ -25,7 +25,7 @@ const ProductCard = ({ product }: { product: TProduct }) => {
           </h1>
           <p className="text-sm md:text-base">Author : {author}</p>
           <p className="text-sm md:text-base">Category : {category}</p>
-          <p className="text-sm md:text-base">Price : {price}</p>
+          <p className="text-sm md:text-base">Price : ${price}</p>
           <Link to={`/book-details/${_id}`} className="btn btn-primary">
             View Details
           </Link>
