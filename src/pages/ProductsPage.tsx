@@ -18,6 +18,8 @@ const ProductsPage = () => {
     }
   );
 
+  console.log(products);
+
   return (
     <div className="pt-4 md:pt-6 lg:pt-10">
       <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-center py-4">

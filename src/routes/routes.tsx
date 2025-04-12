@@ -3,7 +3,6 @@ import App from "../App";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import HomePage from "../pages/HomePage";
-import AllProductsPage from "../pages/AllProductsPage";
 import AboutPage from "../pages/AboutPage";
 import ContactPage from "../pages/ContactPage";
 import BookDetailsPage from "../pages/BookDetailsPage";
@@ -13,6 +12,8 @@ import UserRoute from "./guards/UserRoute";
 import UserLayout from "../component/layout/UserLayout";
 import AllProducts from "../pages/AllProducts";
 import ProductsPage from "../pages/ProductsPage";
+import OrderManagePage from "../pages/OrderManagePage";
+import AdminProfile from "../pages/AdminProfile";
 
 const router = createBrowserRouter([
   {
@@ -51,11 +52,11 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <AboutPage />,
+        element: <AdminProfile />,
       },
       {
-        path: "profile",
-        element: <AllProductsPage />,
+        path: "orders",
+        element: <OrderManagePage />,
       },
       {
         path: "products",
