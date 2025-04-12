@@ -31,7 +31,8 @@ export type TOrder = {
 };
 
 const OrderListCard = ({ order }: { order: TOrder }) => {
-  const { _id, email, productId, quantity, totalPrice, status } = order;
+  const { _id, email, productId, quantity, totalPrice, status, transaction } =
+    order;
   const [deleteOrder] = useDeleteOrderMutation();
   const [updateOrder] = useUpdateOrderMutation();
 
@@ -51,8 +52,9 @@ const OrderListCard = ({ order }: { order: TOrder }) => {
       ...data,
       quantity: Number(data.quantity),
       totalPrice: Number(data.totalPrice),
+      transaction,
     };
-    const res = await updateOrder({ id: _id, payload: parsedData });
+    const res = await updateOrder({ id: _id, ...parsedData });
     if (res?.data?.success) {
       Swal.fire({
         position: "center",
@@ -136,14 +138,21 @@ const OrderListCard = ({ order }: { order: TOrder }) => {
                         type="number"
                         className="input"
                         placeholder="Quantity"
-                        {...register("quantity")}
+                        {...register("quantity", {
+                          valueAsNumber: true,
+                          min: 1,
+                        })}
                       />
                       <label className="fieldset-label">Total Price</label>
                       <input
                         type="number"
+                        step="any"
                         className="input"
                         placeholder="Total Price"
-                        {...register("totalPrice")}
+                        {...register("totalPrice", {
+                          valueAsNumber: true,
+                          min: 0,
+                        })}
                       />
                       <label className="fieldset-label">Status</label>
                       <select
