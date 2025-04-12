@@ -18,7 +18,7 @@ const orderApi = apiSlice.injectEndpoints({
     deleteOrder: builder.mutation({
       query: (id) => ({
         url: `/order/${id}`,
-        method: "POST",
+        method: "DELETE",
       }),
     }),
     updateOrder: builder.mutation({

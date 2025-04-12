@@ -1,6 +1,7 @@
 import { MdOutlineDelete, MdOutlineSecurityUpdate } from "react-icons/md";
 import { useDeleteProductMutation } from "../../../redux/features/api/endpoints/productApi";
 import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 export type TListProduct = {
   _id: string;
@@ -17,13 +18,34 @@ const ProductListCard = ({ product }: { product: TListProduct }) => {
   const { _id, title, author, category, price, inStock } = product;
 
   const [deleteProduct] = useDeleteProductMutation();
-  const handleDelete = async () => {
-    const res = await deleteProduct(_id).unwrap();
-    if (res.status) {
-      toast.success(`${res?.data?.title} has been deleted!`);
-    } else {
-      toast.error(`${title} can't be deleted right now!`);
-    }
+  const handleDelete = async (id: string) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const res = await deleteProduct(id).unwrap();
+        if (res.success) {
+          Swal.fire({
+            title: "Deleted!",
+            text: `${res?.data?.title} has been deleted!`,
+            icon: "success",
+          });
+        } else {
+          toast.error(`${title} can't be deleted right now!`);
+        }
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success",
+        });
+      }
+    });
   };
 
   return (
@@ -58,7 +80,7 @@ const ProductListCard = ({ product }: { product: TListProduct }) => {
           </div>
 
           <button
-            onClick={handleDelete}
+            onClick={() => handleDelete(_id)}
             className="btn btn-ghost text-red-500 border-t-2 border-violet-400"
           >
             Delete <MdOutlineDelete />

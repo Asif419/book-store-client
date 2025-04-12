@@ -1,6 +1,8 @@
 import {
   setAuthor,
   setCategory,
+  setMaxPrice,
+  setMinPrice,
   setSearchTerm,
   setTitle,
 } from "../redux/features/api/filterSlice";
@@ -14,6 +16,8 @@ const FilteringSideBar = () => {
     disPatch(setTitle(""));
     disPatch(setAuthor(""));
     disPatch(setCategory(""));
+    disPatch(setMinPrice(0));
+    disPatch(setMaxPrice(200));
   };
   return (
     <div>

@@ -3,7 +3,6 @@ import App from "../App";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import HomePage from "../pages/HomePage";
-import AllProductsPage from "../pages/AllProductsPage";
 import AboutPage from "../pages/AboutPage";
 import ContactPage from "../pages/ContactPage";
 import BookDetailsPage from "../pages/BookDetailsPage";
@@ -13,11 +12,8 @@ import UserRoute from "./guards/UserRoute";
 import UserLayout from "../component/layout/UserLayout";
 import AllProducts from "../pages/AllProducts";
 import ProductsPage from "../pages/ProductsPage";
-import UserOrders from "../component/ui/UserDashboard/UserOrders";
-import UserProfile from "../component/ui/UserDashboard/UserProfile";
-import ResetPassword from "../component/ui/UserDashboard/ResetPassword";
-import NotFoundPage from "../pages/NotFoundpage";
-import AdminRoute from "./guards/AdminRoute";
+import OrderManagePage from "../pages/OrderManagePage";
+import AdminProfile from "../pages/AdminProfile";
 
 const router = createBrowserRouter([
   {
@@ -56,11 +52,11 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <AdminRoute> <AboutPage /> </AdminRoute>,
+        element: <AdminProfile />,
       },
       {
-        path: "profile",
-        element: <AdminRoute> <AllProductsPage /></AdminRoute>,
+        path: "orders",
+        element: <OrderManagePage />,
       },
       {
         path: "products",
