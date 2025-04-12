@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useGetAllProductsQuery } from "../redux/features/api/endpoints/productApi";
 import FilteringOptions from "./FilteringOptions";
+import PriceRangeSlider from "./PriceRangeSlider";
 
 const FilteringComponent = () => {
   const { data, isLoading } = useGetAllProductsQuery("", {
@@ -70,6 +71,10 @@ const FilteringComponent = () => {
               ></FilteringOptions>
             ))}
         </div>
+      </div>
+      <div>
+        <h4 className="text-lg md:text-xl lg:text-2xl pt-6">Price</h4>
+        <PriceRangeSlider></PriceRangeSlider>
       </div>
     </div>
   );

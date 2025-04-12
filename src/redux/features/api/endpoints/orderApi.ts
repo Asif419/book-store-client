@@ -14,10 +14,27 @@ const orderApi = apiSlice.injectEndpoints({
         url: "/order",
         method: "GET",
       }),
-      providesTags: ["product"],
+    }),
+    deleteOrder: builder.mutation({
+      query: (id) => ({
+        url: `/order/${id}`,
+        method: "POST",
+      }),
+    }),
+    updateOrder: builder.mutation({
+      query: ({ id, ...payload }) => ({
+        url: `/order/${id}`,
+        method: "POST",
+        body: payload,
+      }),
     }),
   }),
   overrideExisting: false,
 });
 
-export const { usePlaceOrderMutation, useGetAllOrdersQuery } = orderApi;
+export const {
+  usePlaceOrderMutation,
+  useGetAllOrdersQuery,
+  useUpdateOrderMutation,
+  useDeleteOrderMutation,
+} = orderApi;

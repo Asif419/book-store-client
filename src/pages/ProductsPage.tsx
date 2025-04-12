@@ -1,17 +1,20 @@
-import OrderList from "../component/ui/AdminDashboard/OrderList";
-import { useGetAllOrdersQuery } from "../redux/features/api/endpoints/orderApi";
+import ProductListCard from "../component/ui/AdminDashboard/ProductListCard";
+import { useGetAllProductsQuery } from "../redux/features/api/endpoints/productApi";
 
 const ProductsPage = () => {
   const {
-    data: orders,
+    data: products,
     isLoading,
     isError,
-  } = useGetAllOrdersQuery(undefined, {
-    pollingInterval: 30000,
-    refetchOnFocus: true,
-    refetchOnMountOrArgChange: true,
-    refetchOnReconnect: true,
-  });
+  } = useGetAllProductsQuery(
+    {},
+    {
+      pollingInterval: 30000,
+      refetchOnFocus: true,
+      refetchOnMountOrArgChange: true,
+      refetchOnReconnect: true,
+    }
+  );
 
   return (
     <div className="pt-4 md:pt-6 lg:pt-10">
@@ -32,15 +35,18 @@ const ProductsPage = () => {
           </div>
         )}
 
-        {!isLoading && orders.data.length < 0 && (
+        {!isLoading && products.data.length < 0 && (
           <div className="py-4 md:py-6">
             <p>No Orders Placed at this moment!</p>
           </div>
         )}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-5">
           {!isLoading &&
-            orders.data.map((order) => (
-              <OrderList key={order._id} order={order}></OrderList>
+            products.data.map((product) => (
+              <ProductListCard
+                key={product._id}
+                product={product}
+              ></ProductListCard>
             ))}
         </div>
       </div>
