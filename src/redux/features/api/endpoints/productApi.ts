@@ -20,13 +20,22 @@ const productApi = apiSlice.injectEndpoints({
       }),
       providesTags: ["product"],
     }),
-    createProduct: builder.query({
-      query: () => ({
+    // createProduct: builder.query({
+    //   query: () => ({
+    //     url: "/product",
+    //     method: "POST",
+    //   }),
+    //   providesTags: ["product"],
+    // }),
+    // This addBook is edited by -Asif
+    addBookByAdmin: builder.mutation({
+      query: (body) => ({
         url: "/product",
-        method: "GET",
+        method: "POST",
+        body,
       }),
-      providesTags: ["product"],
     }),
+
     deleteProduct: builder.mutation({
       query: (id) => ({
         url: `product/${id}`,
@@ -34,11 +43,21 @@ const productApi = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["product"],
     }),
+    // updateProduct: builder.mutation({
+    //   query: ({ id, ...payload }) => ({
+    //     url: `/product/${id}`,
+    //     method: "POST",
+    //     body: payload,
+    //   }),
+    //   invalidatesTags: ["product"],
+    // }),
+
+    // This updateProduct is edited by -Asif
     updateProduct: builder.mutation({
-      query: ({ id, ...payload }) => ({
+      query: ({ id, data }) => ({
         url: `/product/${id}`,
-        method: "POST",
-        body: payload,
+        method: "PATCH",
+        body: data,
       }),
       invalidatesTags: ["product"],
     }),
@@ -48,7 +67,7 @@ const productApi = apiSlice.injectEndpoints({
 
 export const {
   useGetAllProductsQuery,
-  useCreateProductQuery,
+  useAddBookByAdminMutation,
   useUpdateProductMutation,
   useDeleteProductMutation,
 } = productApi;
