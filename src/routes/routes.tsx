@@ -17,6 +17,7 @@ import UserOrders from "../component/ui/UserDashboard/UserOrders";
 import UserProfile from "../component/ui/UserDashboard/UserProfile";
 import ResetPassword from "../component/ui/UserDashboard/ResetPassword";
 import NotFoundPage from "../pages/NotFoundpage";
+import AdminRoute from "./guards/AdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -51,23 +52,23 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: <AdminLayout />,
+    element: <AdminRoute> <AdminLayout /> </AdminRoute>,
     children: [
       {
         index: true,
-        element: <AboutPage />,
+        element: <AdminRoute> <AboutPage /> </AdminRoute>,
       },
       {
         path: "profile",
-        element: <AllProductsPage />,
+        element: <AdminRoute> <AllProductsPage /></AdminRoute>,
       },
       {
         path: "products",
-        element: <ProductsPage />,
+        element: <AdminRoute> <ProductsPage /> </AdminRoute>,
       },
       {
         path: "users",
-        element: <BookDetailsPage />,
+        element: <AdminRoute> <BookDetailsPage /> </AdminRoute> ,
       },
     ],
   },
