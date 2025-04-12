@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 
 export type TTransaction = {
   id: string;
-  transactionStatus: "Initiated" | "Success" | "Failed"; // or adjust based on your actual values
+  transactionStatus: "Initiated" | "Success" | "Failed";
   bank_status: string;
   date_time: string;
   method: string;
@@ -18,7 +18,7 @@ export type TOrder = {
   productId: string;
   quantity: number;
   totalPrice: number;
-  status: "Paid" | "Pending" | "Cancelled"; // adjust based on possible values
+  status: "Paid" | "Pending" | "Cancelled";
   transaction: TTransaction;
   createdAt: string;
   updatedAt: string;
