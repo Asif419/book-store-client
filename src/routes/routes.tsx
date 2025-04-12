@@ -13,6 +13,11 @@ import UserRoute from "./guards/UserRoute";
 import UserLayout from "../component/layout/UserLayout";
 import AllProducts from "../pages/AllProducts";
 import ProductsPage from "../pages/ProductsPage";
+import UserOrders from "../component/ui/UserDashboard/UserOrders";
+import UserProfile from "../component/ui/UserDashboard/UserProfile";
+import ResetPassword from "../component/ui/UserDashboard/ResetPassword";
+import NotFoundPage from "../pages/NotFoundpage";
+import AdminRoute from "./guards/AdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -47,23 +52,23 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: <AdminLayout />,
+    element: <AdminRoute> <AdminLayout /> </AdminRoute>,
     children: [
       {
         index: true,
-        element: <AboutPage />,
+        element: <AdminRoute> <AboutPage /> </AdminRoute>,
       },
       {
         path: "profile",
-        element: <AllProductsPage />,
+        element: <AdminRoute> <AllProductsPage /></AdminRoute>,
       },
       {
         path: "products",
-        element: <ProductsPage />,
+        element: <AdminRoute> <ProductsPage /> </AdminRoute>,
       },
       {
         path: "users",
-        element: <BookDetailsPage />,
+        element: <AdminRoute> <BookDetailsPage /> </AdminRoute> ,
       },
     ],
   },
@@ -76,15 +81,23 @@ const router = createBrowserRouter([
         path: "orders",
         element: (
           <UserRoute>
-            <CheckoutPage />
+            <UserOrders />
           </UserRoute>
         ),
       },
       {
-        path: "dashboard/:id",
+        path: "edit-profile",
         element: (
           <UserRoute>
-            <CheckoutPage />
+            <UserProfile />
+          </UserRoute>
+        ),
+      },
+      {
+        path: "reset-password",
+        element: (
+          <UserRoute>
+            <ResetPassword />
           </UserRoute>
         ),
       },
@@ -106,6 +119,10 @@ const router = createBrowserRouter([
     path: "/register",
     element: <Register />,
   },
+  {
+    path: "*",
+    element: <NotFoundPage />
+  }
 ]);
 
 export default router;

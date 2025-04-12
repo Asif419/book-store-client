@@ -28,6 +28,12 @@ const orderApi = apiSlice.injectEndpoints({
         body: payload,
       }),
     }),
+    getOwnOrders: builder.query<any, void>({
+      query: () => ({
+        url: "/order/own_order",
+        method: "GET",
+      }),
+    }),
   }),
   overrideExisting: false,
 });
@@ -37,4 +43,5 @@ export const {
   useGetAllOrdersQuery,
   useUpdateOrderMutation,
   useDeleteOrderMutation,
+  useGetOwnOrdersQuery,
 } = orderApi;
