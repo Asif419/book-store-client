@@ -14,6 +14,7 @@ import UserLayout from "../component/layout/UserLayout";
 import AllProducts from "../pages/AllProducts";
 import ProductsPage from "../pages/ProductsPage";
 import UserOrders from "../component/ui/UserDashboard/UserOrders";
+import UserProfile from "../component/ui/UserDashboard/UserProfile";
 
 const router = createBrowserRouter([
   {
@@ -82,10 +83,10 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "dashboard/:id",
+        path: "edit-profile",
         element: (
           <UserRoute>
-            <CheckoutPage />
+            <UserProfile />
           </UserRoute>
         ),
       },

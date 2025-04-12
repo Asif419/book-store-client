@@ -28,7 +28,7 @@ const orderApi = apiSlice.injectEndpoints({
         body: payload,
       }),
     }),
-    getOwnOrders: builder.query({
+    getOwnOrders: builder.query<any, void>({
       query: () => ({
         url: "/order/own_order",
         method: "GET",

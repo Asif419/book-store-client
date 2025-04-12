@@ -37,7 +37,7 @@ const UserNavbar = () => {
                         <li><NavLink to={'/'}>Home</NavLink></li>
                         <li><NavLink to={'/all-products'}>Books</NavLink></li>
                         <li><NavLink to="/user/orders">Orders</NavLink></li>
-                        <li><NavLink to="/user/settings">Settings</NavLink></li>
+                        <li><NavLink to="/user/edit-profile">Profile</NavLink></li>
                         <li><button onClick={handleLogout}>Logout</button></li>
                     </ul>
                 </div>
@@ -47,7 +47,7 @@ const UserNavbar = () => {
                     <li><NavLink to={'/'}>Home</NavLink></li>
                     <li><NavLink to={'/all-products'}>Books</NavLink></li>
                     <li><NavLink to="/user/orders">Orders</NavLink></li>
-                    <li><NavLink to="/user/settings">Settings</NavLink></li>
+                    <li><NavLink to="/user/edit-profile">Profile</NavLink></li>
                     <button className="btn btn-outline btn-sm" onClick={handleLogout}>Logout</button>
                 </ul>
             </div>
