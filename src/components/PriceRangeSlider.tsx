@@ -8,7 +8,6 @@ const PriceRangeSlider = () => {
   const min = 0;
   const max = 200;
 
-  console.log(values);
 
   const dispatch = useAppDispatch();
 

@@ -34,7 +34,6 @@ const CheckoutPage = () => {
       toast.success("Order placed successfully!");
       navigate("/");
     } catch (err: any) {
-      console.error("Order failed:", err);
       toast.error(err?.data?.message || "Failed to place order.");
     }
   };

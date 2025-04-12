@@ -32,11 +32,9 @@ const Register = () => {
         password: data.password,
         role: "user",
       };
-      const res = await registerUser(payload).unwrap();
-      console.log("Registration success:", res);
+      await registerUser(payload).unwrap();
       navigate("/login");
     } catch (err: any) {
-      console.error("Registration error:", err);
       const message = err?.data?.message || "Registration failed. Please try again.";
       setRegisterError(message);
     }
