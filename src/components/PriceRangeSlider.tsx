@@ -4,9 +4,9 @@ import { useAppDispatch } from "../redux/hook";
 import { setMaxPrice, setMinPrice } from "../redux/features/api/filterSlice";
 
 const PriceRangeSlider = () => {
-  const [values, setValues] = useState([5, 120]);
+  const [values, setValues] = useState([5, 80]);
   const min = 0;
-  const max = 500;
+  const max = 200;
 
   console.log(values);
 
@@ -14,8 +14,8 @@ const PriceRangeSlider = () => {
 
   const handlePriceRangeFiltering = (val: number[]) => {
     setValues(val);
-    dispatch(setMinPrice(val[0]));
-    dispatch(setMaxPrice(val[1]));
+    dispatch(setMinPrice(values[0]));
+    dispatch(setMaxPrice(values[1]));
   };
   return (
     <div className="px-6 py-4 w-full max-w-md mx-auto">
