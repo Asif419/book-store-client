@@ -2,6 +2,7 @@ import ProductListCard, {
   TListProduct,
 } from "../component/ui/AdminDashboard/ProductListCard";
 import { useGetAllProductsQuery } from "../redux/features/api/endpoints/productApi";
+import { Link } from "react-router-dom";
 
 const ProductsPage = () => {
   const {
@@ -18,13 +19,22 @@ const ProductsPage = () => {
     }
   );
 
-  console.log(products);
+  // handle add book
+
+
 
   return (
     <div className="pt-4 md:pt-6 lg:pt-10">
       <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-center py-4">
         📦 Manage Products
       </h1>
+      <div className="flex justify-end px-4 mb-6">
+        <div className="flex justify-end px-4 mb-6">
+          <Link to="/admin/add-book" className="btn btn-primary">
+            Add Book
+          </Link>
+        </div>
+      </div>
       <div>
         {isLoading && (
           <div className="h-96 flex justify-center items-center">
@@ -44,7 +54,7 @@ const ProductsPage = () => {
             <p>No Orders Placed at this moment!</p>
           </div>
         )}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-6 px-4">
           {!isLoading &&
             products.data.map((product: TListProduct) => (
               <ProductListCard

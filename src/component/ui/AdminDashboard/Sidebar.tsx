@@ -56,6 +56,18 @@ const Sidebar = () => {
                   👥 Users
                 </Link>
               </li>
+              <li>
+                <Link
+                  to="/"
+                  onClick={() =>
+                    document
+                      .getElementById("mobileMenu")
+                      ?.removeAttribute("open")
+                  }
+                >
+                  Home Page
+                </Link>
+              </li>
             </ul>
           </details>
         </div>
@@ -82,6 +94,12 @@ const Sidebar = () => {
             to="users"
           >
             👥 Users
+          </Link>
+          <Link
+            className="btn btn-ghost w-full text-left justify-start"
+            to="/"
+          >
+            Home Page
           </Link>
         </div>
       </aside>

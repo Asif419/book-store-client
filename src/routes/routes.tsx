@@ -19,6 +19,7 @@ import UserProfile from "../component/ui/UserDashboard/UserProfile";
 import ResetPassword from "../component/ui/UserDashboard/ResetPassword";
 import UserOrders from "../component/ui/UserDashboard/UserOrders";
 import NotFoundPage from "../pages/NotFoundpage";
+import AddBookPage from "../pages/AddBookPage";
 
 const router = createBrowserRouter([
   {
@@ -85,6 +86,13 @@ const router = createBrowserRouter([
             <BookDetailsPage />{" "}
           </AdminRoute>
         ),
+      },
+      {
+        path: "add-book",
+        element: <AdminRoute>
+          {" "}
+          <AddBookPage />{" "}
+        </AdminRoute>
       },
     ],
   },
