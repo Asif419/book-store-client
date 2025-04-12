@@ -48,7 +48,6 @@ const LoginPage = () => {
       toast.success("Logged in successfully!");
       navigate('/');
     } catch (error: any) {
-      console.error("Login failed", error);
       const message = error?.data?.message || "Login failed. Please try again.";
       setLoginError(message);
     }

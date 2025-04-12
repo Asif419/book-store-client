@@ -19,7 +19,6 @@ const ProductListCard = ({ product }: { product: TListProduct }) => {
   const [deleteProduct] = useDeleteProductMutation();
   const handleDelete = async () => {
     const res = await deleteProduct(_id).unwrap();
-    console.log(res);
     if (res.status) {
       toast.success(`${res?.data?.title} has been deleted!`);
     } else {

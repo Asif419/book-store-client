@@ -15,9 +15,9 @@ const UserOrders = () => {
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-6">
-      <h2 className="text-2xl font-bold mb-6">🛒 Your Orders</h2>
+      <h2 className="text-2xl font-bold mb-6">🛒 My Orders</h2>
 
-      {isLoading && <p>Loading your orders...</p>}
+      {isLoading && <p>Loading My orders...</p>}
       {isError && <p className="text-red-500">Failed to load orders.</p>}
 
       {!isLoading && orders.length === 0 && (
