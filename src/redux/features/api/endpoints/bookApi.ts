@@ -2,7 +2,7 @@ import { apiSlice } from "../apiSlice";
 
 const bookApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getBooks: builder.query({ query: () => "/product" }),
+    getBooks: builder.query<any, void>({ query: () => "/product" }),
     getBookById: builder.query({
       query: (id) => `/product/${id}`,
     }),

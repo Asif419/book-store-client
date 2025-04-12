@@ -1,10 +1,10 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../../redux/hook";
+import { useAppDispatch } from "../../../redux/hook";
 import { logout } from "../../../redux/features/api/endpoints/authSlice";
 
 
 const UserNavbar = () => {
-    const user = useAppSelector((state) => state.auth.user);
+    // const user = useAppSelector((state) => state.auth.user);
 
     const dispatch = useAppDispatch();
     const navigate = useNavigate();

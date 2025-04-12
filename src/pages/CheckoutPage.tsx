@@ -3,13 +3,13 @@ import { useAppSelector } from "../redux/hook";
 import { useState } from "react";
 import { useGetBookByIdQuery } from "../redux/features/api/endpoints/bookApi";
 import { toast } from "react-hot-toast";
-import { usePlaceOrderMutation } from "../redux/features/api/endpoints/orderApi";
+// import { usePlaceOrderMutation } from "../redux/features/api/endpoints/orderApi";
 
 const CheckoutPage = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const { data: book, isLoading } = useGetBookByIdQuery(id);
-  const [placeOrder] = usePlaceOrderMutation();
+  // const [placeOrder] = usePlaceOrderMutation();
   const user = useAppSelector((state) => state.auth.user);
 
   const [quantity, setQuantity] = useState(1);
@@ -30,7 +30,7 @@ const CheckoutPage = () => {
 
   const handleOrder = () => {
     try {
-      const res = placeOrder({ productId: book.data._id, quantity }).unwrap();
+      // const res = placeOrder({ productId: book.data._id, quantity }).unwrap();
       toast.success("Order placed successfully!");
       navigate("/");
     } catch (err: any) {

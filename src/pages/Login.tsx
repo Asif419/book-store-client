@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useAppDispatch } from "../redux/hook";
 import { setUser } from "../redux/features/api/endpoints/authSlice";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const LoginPage = () => {
   type LoginFormValues = {
@@ -12,7 +13,7 @@ const LoginPage = () => {
   };
 
 
-  const [login, { data, isLoading, isError, error }] = useLoginMutation();
+  const [login, { isLoading }] = useLoginMutation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [loginError, setLoginError] = useState<string | null>(null);
@@ -43,6 +44,8 @@ const LoginPage = () => {
       localStorage.setItem("user", JSON.stringify(res.data.verifiedUser));
       localStorage.setItem('token', res.data.token);
 
+
+      toast.success("Logged in successfully!");
       navigate('/');
     } catch (error: any) {
       console.error("Login failed", error);
