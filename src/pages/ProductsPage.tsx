@@ -1,4 +1,6 @@
-import ProductListCard from "../component/ui/AdminDashboard/ProductListCard";
+import ProductListCard, {
+  TListProduct,
+} from "../component/ui/AdminDashboard/ProductListCard";
 import { useGetAllProductsQuery } from "../redux/features/api/endpoints/productApi";
 
 const ProductsPage = () => {
@@ -42,7 +44,7 @@ const ProductsPage = () => {
         )}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-5">
           {!isLoading &&
-            products.data.map((product) => (
+            products.data.map((product: TListProduct) => (
               <ProductListCard
                 key={product._id}
                 product={product}

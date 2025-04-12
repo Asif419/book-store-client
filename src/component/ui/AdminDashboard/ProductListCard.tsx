@@ -17,8 +17,8 @@ const ProductListCard = ({ product }: { product: TListProduct }) => {
   const { _id, title, author, category, price, inStock } = product;
 
   const [deleteProduct] = useDeleteProductMutation();
-  const handleDelete = async () => {
-    const res = await deleteProduct(_id).unwrap();
+  const handleDelete = async (id: string) => {
+    const res = await deleteProduct(id).unwrap();
     console.log(res);
     if (res.status) {
       toast.success(`${res?.data?.title} has been deleted!`);
@@ -59,7 +59,7 @@ const ProductListCard = ({ product }: { product: TListProduct }) => {
           </div>
 
           <button
-            onClick={handleDelete}
+            onClick={() => handleDelete(_id)}
             className="btn btn-ghost text-red-500 border-t-2 border-violet-400"
           >
             Delete <MdOutlineDelete />

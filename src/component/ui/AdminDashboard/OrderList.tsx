@@ -1,8 +1,5 @@
 import { MdOutlineDelete, MdOutlineSecurityUpdate } from "react-icons/md";
-import {
-  useDeleteOrderMutation,
-  useUpdateOrderMutation,
-} from "../../../redux/features/api/endpoints/orderApi";
+import { useDeleteOrderMutation } from "../../../redux/features/api/endpoints/orderApi";
 import toast from "react-hot-toast";
 
 export type TOrder = {
@@ -25,7 +22,6 @@ const OrderList = ({ order }: { order: TOrder }) => {
   const { _id, email, productId, quantity, totalPrice, status } = order;
 
   const [deleteOrder] = useDeleteOrderMutation();
-  const [updateOrder] = useUpdateOrderMutation();
 
   const handleDelete = async () => {
     const res = await deleteOrder(_id).unwrap();
