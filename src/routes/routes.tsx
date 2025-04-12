@@ -53,7 +53,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: <AdminRoute> <AdminLayout /> </AdminRoute>,
+    element: (
+      <AdminRoute>
+        {" "}
+        <AdminLayout />{" "}
+      </AdminRoute>
+    ),
     children: [
       {
         index: true,
@@ -65,11 +70,21 @@ const router = createBrowserRouter([
       },
       {
         path: "products",
-        element: <AdminRoute> <ProductsPage /> </AdminRoute>,
+        element: (
+          <AdminRoute>
+            {" "}
+            <ProductsPage />{" "}
+          </AdminRoute>
+        ),
       },
       {
         path: "users",
-        element: <AdminRoute> <BookDetailsPage /> </AdminRoute> ,
+        element: (
+          <AdminRoute>
+            {" "}
+            <BookDetailsPage />{" "}
+          </AdminRoute>
+        ),
       },
     ],
   },
@@ -122,8 +137,8 @@ const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <NotFoundPage />
-  }
+    element: <NotFoundPage />,
+  },
 ]);
 
 export default router;

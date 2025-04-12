@@ -32,6 +32,7 @@ const productApi = apiSlice.injectEndpoints({
         url: `product/${id}`,
         method: "DELETE",
       }),
+      invalidatesTags: ["product"],
     }),
     updateProduct: builder.mutation({
       query: ({ id, ...payload }) => ({
@@ -39,6 +40,7 @@ const productApi = apiSlice.injectEndpoints({
         method: "POST",
         body: payload,
       }),
+      invalidatesTags: ["product"],
     }),
   }),
   overrideExisting: false,

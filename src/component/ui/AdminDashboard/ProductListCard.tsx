@@ -39,11 +39,6 @@ const ProductListCard = ({ product }: { product: TListProduct }) => {
         } else {
           toast.error(`${title} can't be deleted right now!`);
         }
-        Swal.fire({
-          title: "Deleted!",
-          text: "Your file has been deleted.",
-          icon: "success",
-        });
       }
     });
   };

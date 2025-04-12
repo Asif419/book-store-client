@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { apiSlice } from "../apiSlice";
 
 const orderApi = apiSlice.injectEndpoints({
@@ -8,25 +9,29 @@ const orderApi = apiSlice.injectEndpoints({
         method: "POST",
         body: { productId, quantity },
       }),
+      invalidatesTags: ["order"],
     }),
     getAllOrders: builder.query({
       query: () => ({
         url: "/order",
         method: "GET",
       }),
+      providesTags: ["order"],
     }),
     deleteOrder: builder.mutation({
       query: (id) => ({
         url: `/order/${id}`,
         method: "DELETE",
       }),
+      invalidatesTags: ["order"],
     }),
     updateOrder: builder.mutation({
       query: ({ id, ...payload }) => ({
         url: `/order/${id}`,
-        method: "POST",
+        method: "PUT",
         body: payload,
       }),
+      invalidatesTags: ["order"],
     }),
     getOwnOrders: builder.query<any, void>({
       query: () => ({
