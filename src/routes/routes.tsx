@@ -13,6 +13,7 @@ import UserRoute from "./guards/UserRoute";
 import UserLayout from "../component/layout/UserLayout";
 import AllProducts from "../pages/AllProducts";
 import ProductsPage from "../pages/ProductsPage";
+import UserOrders from "../component/ui/UserDashboard/UserOrders";
 
 const router = createBrowserRouter([
   {
@@ -76,7 +77,7 @@ const router = createBrowserRouter([
         path: "orders",
         element: (
           <UserRoute>
-            <CheckoutPage />
+            <UserOrders />
           </UserRoute>
         ),
       },

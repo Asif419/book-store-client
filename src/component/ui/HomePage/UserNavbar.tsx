@@ -20,8 +20,8 @@ const UserNavbar = () => {
 
         <nav className="navbar bg-base-100 shadow-md">
             <div className="flex-1">
-                <NavLink to={'/'}>
-                    <a className="btn btn-ghost normal-case text-xl">📚 BookShop</a>
+                <NavLink to="/" className="btn btn-ghost normal-case text-xl">
+                    📚 BookShop
                 </NavLink>
             </div>
 
