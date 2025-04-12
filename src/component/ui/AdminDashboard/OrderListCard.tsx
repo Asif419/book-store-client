@@ -1,6 +1,7 @@
 import { MdOutlineDelete, MdOutlineSecurityUpdate } from "react-icons/md";
 import { useDeleteOrderMutation } from "../../../redux/features/api/endpoints/orderApi";
 import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 export type TTransaction = {
   id: string;
@@ -30,13 +31,28 @@ const OrderListCard = ({ order }: { order: TOrder }) => {
   const [deleteOrder] = useDeleteOrderMutation();
 
   const handleDelete = async (id: string) => {
-    const res = await deleteOrder(id).unwrap();
-    console.log(res);
-    if (res.success) {
-      toast.success(`${res?.data?.productId} has been deleted!`);
-    } else {
-      toast.error(`${productId} can't be deleted right now!`);
-    }
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const res = await deleteOrder(id).unwrap();
+        if (res.success) {
+          Swal.fire({
+            title: "Deleted!",
+            text: `${res?.data?.productId} has been deleted!`,
+            icon: "success",
+          });
+        } else {
+          toast.error(`${productId} can't be deleted right now!`);
+        }
+      }
+    });
   };
   return (
     <div className="card bg-neutral text-neutral-content w-full">
