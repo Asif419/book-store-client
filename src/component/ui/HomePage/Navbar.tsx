@@ -1,6 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../redux/hook";
 import { logout } from "../../../redux/features/api/endpoints/authSlice";
+import toast from "react-hot-toast";
 
 
 const Navbar = () => {
@@ -12,6 +13,8 @@ const Navbar = () => {
         dispatch(logout());
         localStorage.removeItem("user");
         localStorage.removeItem("token");
+
+        toast.success("Logged out successfully!");
         navigate("/login");
     };
 
@@ -37,8 +40,8 @@ const Navbar = () => {
                         <li onClick={() => document.getElementById('mainNavDropdown')?.removeAttribute('open')}><NavLink to={'all-products'}>Books</NavLink></li>
                         <li onClick={() => document.getElementById('mainNavDropdown')?.removeAttribute('open')}><NavLink to={'about'}>About</NavLink></li>
                         <li onClick={() => document.getElementById('mainNavDropdown')?.removeAttribute('open')}><NavLink to={'contact'}>Contact</NavLink></li>
-                        {user ? (
-                            <li onClick={() => document.getElementById('mainNavDropdown')?.removeAttribute('open')}><NavLink to={'/user'}>Profile</NavLink></li>
+                        {user?.role == 'admin' ? (
+                            <li onClick={() => document.getElementById('mainNavDropdown')?.removeAttribute('open')}><NavLink to={'/admin'}>Dashboard</NavLink></li>
                         ) : null}
                         {user ? (
                             <li onClick={() => {
