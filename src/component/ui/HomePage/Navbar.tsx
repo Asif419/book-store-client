@@ -40,8 +40,19 @@ const Navbar = () => {
                         <li onClick={() => document.getElementById('mainNavDropdown')?.removeAttribute('open')}><NavLink to={'all-products'}>Books</NavLink></li>
                         <li onClick={() => document.getElementById('mainNavDropdown')?.removeAttribute('open')}><NavLink to={'about'}>About</NavLink></li>
                         <li onClick={() => document.getElementById('mainNavDropdown')?.removeAttribute('open')}><NavLink to={'contact'}>Contact</NavLink></li>
-                        {user?.role == 'admin' ? (
-                            <li onClick={() => document.getElementById('mainNavDropdown')?.removeAttribute('open')}><NavLink to={'/admin'}>Dashboard</NavLink></li>
+                        {user?.role === 'admin' ? (
+                            <li onClick={() => document.getElementById('mainNavDropdown')?.removeAttribute('open')}>
+                                <NavLink to="/admin">Dashboard</NavLink>
+                            </li>
+                        ) : user?.role === 'user' ? (
+                            <>
+                                <li onClick={() => document.getElementById('mainNavDropdown')?.removeAttribute('open')}>
+                                    <NavLink to="/user/orders">Orders</NavLink>
+                                </li>
+                                <li onClick={() => document.getElementById('mainNavDropdown')?.removeAttribute('open')}>
+                                    <NavLink to="/user/edit-profile">Edit Profile</NavLink>
+                                </li>
+                            </>
                         ) : null}
                         {user ? (
                             <li onClick={() => {
@@ -69,13 +80,15 @@ const Navbar = () => {
                             <label tabIndex={0} className="btn btn-outline btn-sm m-1">Profile</label>
                             <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                                 {
-                                    user?.role != 'admin' ?
+                                    user?.role == 'admin' ? (
+                                        <li><NavLink to="/admin">Dashboard</NavLink></li>
+                                    ) : user?.role == 'user' ? (
                                         <>
                                             <li><NavLink to="/user/orders">Orders</NavLink></li>
-                                            <li><NavLink to="/user/settings">Settings</NavLink></li>
+                                            <li><NavLink to="/user/edit-profile">Edit Profile</NavLink></li>
                                         </>
-                                        :
-                                        <li><NavLink to="/admin">Dashboard</NavLink></li>
+                                    ) :
+                                        null
                                 }
 
                                 <li><button onClick={handleLogout}>Logout</button></li>
@@ -85,8 +98,8 @@ const Navbar = () => {
                         <button className="btn btn-outline btn-sm"><NavLink to={'/login'}>Login</NavLink></button>
                     )}
                 </ul>
-            </div>
-        </nav>
+            </div >
+        </nav >
     )
 }
 

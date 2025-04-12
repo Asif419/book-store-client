@@ -48,7 +48,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: <AdminLayout />,
+    element: <AdminRoute> <AdminLayout /> </AdminRoute>,
     children: [
       {
         index: true,
@@ -60,11 +60,11 @@ const router = createBrowserRouter([
       },
       {
         path: "products",
-        element: <ProductsPage />,
+        element: <AdminRoute> <ProductsPage /> </AdminRoute>,
       },
       {
         path: "users",
-        element: <BookDetailsPage />,
+        element: <AdminRoute> <BookDetailsPage /> </AdminRoute> ,
       },
     ],
   },
@@ -77,15 +77,23 @@ const router = createBrowserRouter([
         path: "orders",
         element: (
           <UserRoute>
-            <CheckoutPage />
+            <UserOrders />
           </UserRoute>
         ),
       },
       {
-        path: "dashboard/:id",
+        path: "edit-profile",
         element: (
           <UserRoute>
-            <CheckoutPage />
+            <UserProfile />
+          </UserRoute>
+        ),
+      },
+      {
+        path: "reset-password",
+        element: (
+          <UserRoute>
+            <ResetPassword />
           </UserRoute>
         ),
       },
@@ -107,6 +115,10 @@ const router = createBrowserRouter([
     path: "/register",
     element: <Register />,
   },
+  {
+    path: "*",
+    element: <NotFoundPage />
+  }
 ]);
 
 export default router;
