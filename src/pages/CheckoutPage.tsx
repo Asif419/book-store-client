@@ -1,93 +1,165 @@
-import { useNavigate, useParams } from "react-router-dom";
-import { useAppSelector } from "../redux/hook";
-import { useState } from "react";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useForm } from "react-hook-form";
+import { useParams } from "react-router-dom";
 import { useGetBookByIdQuery } from "../redux/features/api/endpoints/bookApi";
-import { toast } from "react-hot-toast";
-// import { usePlaceOrderMutation } from "../redux/features/api/endpoints/orderApi";
+import { useAppSelector } from "../redux/hook";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
+import { useMakePaymentMutation } from "../redux/features/api/endpoints/payment.Api";
 
-const CheckoutPage = () => {
-  const navigate = useNavigate();
-  const { id } = useParams();
-  const { data: book, isLoading } = useGetBookByIdQuery(id);
-  // const [placeOrder] = usePlaceOrderMutation();
-  const user = useAppSelector((state) => state.auth.user);
-
-  const [quantity, setQuantity] = useState(1);
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <span className="loading loading-spinner loading-lg text-primary"></span>
-      </div>
-    );
-  }
-
-  if (!book || !user) {
-    return <p className="text-center py-10">Invalid access. No product or user info found.</p>;
-  }
-
-  const totalPrice = (quantity * book.data.price).toFixed(2);
-
-  const handleOrder = () => {
-    try {
-      // const res = placeOrder({ productId: book.data._id, quantity }).unwrap();
-      toast.success("Order placed successfully!");
-      navigate("/");
-    } catch (err: any) {
-      toast.error(err?.data?.message || "Failed to place order.");
-    }
-  };
-
-  return (
-    <section className="max-w-3xl mx-auto px-4 py-12 text-center">
-      <h2 className="text-2xl font-bold mb-6">Checkout</h2>
-
-      <div className="bg-base-200 p-4 rounded mb-6 text-center">
-        <h3 className="text-xl font-semibold">{book.data.title}</h3>
-        <p className="text-sm">Price: ${book.data.price}</p>
-        <p className="text-sm">In Stock: {book.data.inStock ? book.data.quantity : 0}</p>
-      </div>
-
-      <div className="bg-base-200 text-center p-4 rounded mb-6">
-        <p><strong>Name:</strong> {user.name}</p>
-        <p><strong>Email:</strong> {user.email}</p>
-      </div>
-
-      <div className="space-y-4 text-center">
-        <label className="form-control w-full max-w-xs">
-          <div className="label mr-3"><span className="label-text">Quantity</span></div>
-          <input
-            type="number"
-            min={1}
-            max={book.data.quantity}
-            value={quantity}
-            onChange={(e) => setQuantity(Number(e.target.value))}
-            className="input input-bordered w-4/12 md:w-2/12 max-w-xs"
-          />
-        </label>
-
-        <p className="text-lg mt-5">Total: <strong>${totalPrice}</strong></p>
-
-        <div className="bg-base-100 p-4 border rounded mb-6 text-center max-w-md mx-auto">
-          <h4 className="font-semibold mb-2">Payment Method</h4>
-          <p className="text-sm text-gray-500">SurjoPay integration goes here...</p>
-        </div>
-
-        {/* Order Button */}
-        <div className="text-center">
-          <button
-            className="btn btn-primary px-10"
-            disabled={
-              quantity > book.data.quantity || !book.data.inStock || user.role !== "user"
-            }
-            onClick={handleOrder}
-          >
-            {user.role !== "user" ? "Only Users Can Order" : "Order Now"}
-          </button>
-        </div>
-      </div>
-    </section>
-  );
+type FormData = {
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  paymentMethod: string;
 };
 
-export default CheckoutPage;
+export default function CheckoutPage() {
+  const { id } = useParams();
+  const [quantity, setQuantity] = useState(1);
+  const user = useAppSelector((state) => state.auth.user);
+
+  const { data: book } = useGetBookByIdQuery(id || "");
+  const [makePayment, { isLoading, isSuccess, data, isError, error }] =
+    useMakePaymentMutation();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>();
+
+  const totalPrice = quantity * (book?.data?.price || 0);
+
+  const finalData = {
+    productId: book?.data?._id,
+    quantity,
+  };
+
+  const onSubmit = async () => {
+    // toast.success("test");
+    console.log(finalData);
+    await makePayment(finalData);
+  };
+
+  const toastId = "cart";
+  useEffect(() => {
+    if (isLoading) toast.loading("Processing ...", { id: toastId });
+    if (isSuccess) {
+      toast.success(data?.message, { id: toastId });
+      if (data?.data) {
+        setTimeout(() => {
+          window.location.href = data.data;
+        }, 1000);
+      }
+    }
+    if (isError) toast.error(JSON.stringify(error), { id: toastId });
+  }, [isLoading, isSuccess, data, isError, error]);
+
+  if (!book?.data || !user) {
+    return <p className="text-center py-10">Invalid access.</p>;
+  }
+
+  return (
+    <div className="min-h-screen bg-base-200 p-6 flex flex-col items-center justify-center">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="w-full max-w-5xl bg-base-100 shadow-lg rounded-xl p-6 grid grid-cols-1 md:grid-cols-2 gap-8"
+      >
+        {/* Checkout Form */}
+        <div>
+          <h2 className="text-2xl font-bold mb-4">Checkout</h2>
+          <div className="space-y-4 flex flex-col">
+            {[
+              { label: "Full Name", name: "name", type: "text" },
+              { label: "Email", name: "email", type: "email" },
+              { label: "Phone", name: "phone", type: "tel" },
+              { label: "Address", name: "address", type: "textarea" },
+            ].map(({ label, name, type }) => (
+              <div key={name} className="form-control">
+                <label className="label">
+                  <span className="label-text mb-1">{label}</span>
+                </label>
+                {type === "textarea" ? (
+                  <textarea
+                    {...register(name as keyof FormData, { required: true })}
+                    placeholder={label}
+                    className="textarea textarea-bordered"
+                  />
+                ) : (
+                  <input
+                    type={type}
+                    {...register(name as keyof FormData, { required: true })}
+                    placeholder={label}
+                    className="input input-bordered"
+                  />
+                )}
+                {errors[name as keyof FormData] && (
+                  <p className="text-red-500 text-sm mt-1">{label} is required</p>
+                )}
+              </div>
+            ))}
+
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text mb-1">Payment Method</span>
+              </label>
+              <div className="flex items-center gap-2">
+                <input
+                  type="radio"
+                  value="Shurjopay"
+                  {...register("paymentMethod")}
+                  className="radio checked:bg-primary"
+                  defaultChecked
+                />
+                <span>Shurjopay</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Product Summary */}
+        <div className="border rounded-xl p-4 bg-base-100 shadow-sm">
+          <h3 className="text-xl font-semibold mb-4">Product Summary</h3>
+          <div className="flex gap-4">
+            <div className="w-24 h-24 bg-base-300 rounded-lg overflow-hidden">
+              <img
+                src={book?.data?.cover}
+                alt=""
+                className="object-cover h-full w-full"
+              />
+            </div>
+            <div>
+              <h4 className="font-bold">{book?.data.title}</h4>
+              <p className="text-sm text-gray-500">{book?.data?.description}</p>
+
+              <label className="form-control w-full max-w-xs mt-2">
+                <span className="label-text mb-1">Quantity</span>
+                <input
+                  type="number"
+                  min={1}
+                  max={book?.data?.quantity}
+                  value={quantity}
+                  onChange={(e) => setQuantity(Number(e.target.value))}
+                  className="input input-bordered"
+                />
+              </label>
+
+              <p className="text-primary font-bold text-lg mt-2">
+                ৳ {totalPrice}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="md:col-span-2 text-right mt-4">
+          <button type="submit" className="btn btn-primary px-8">
+            Place Order
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+}
