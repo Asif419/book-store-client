@@ -15,6 +15,7 @@ import AllProducts from "../pages/AllProducts";
 import ProductsPage from "../pages/ProductsPage";
 import UserOrders from "../component/ui/UserDashboard/UserOrders";
 import UserProfile from "../component/ui/UserDashboard/UserProfile";
+import ResetPassword from "../component/ui/UserDashboard/ResetPassword";
 
 const router = createBrowserRouter([
   {
@@ -87,6 +88,14 @@ const router = createBrowserRouter([
         element: (
           <UserRoute>
             <UserProfile />
+          </UserRoute>
+        ),
+      },
+      {
+        path: "reset-password",
+        element: (
+          <UserRoute>
+            <ResetPassword />
           </UserRoute>
         ),
       },
