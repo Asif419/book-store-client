@@ -1,54 +1,99 @@
-# React + TypeScript + Vite
+## 🔗 Live Link
+https://book-shop-client-ashy.vercel.app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🚀 Features
 
-Currently, two official plugins are available:
+- 🛒 Browse and view details of books
+- 🔐 Auth system with role-based access
+- 🧑‍💼 Admin Dashboard to manage products and users
+- 👤 User profile management and order history
+- 💳 Checkout system
+- 📚 Add, edit, and delete books (admin)
+- 📦 Manage orders (admin)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🧪 Tech Stack
 
-## Expanding the ESLint configuration
+- React
+- TypeScript
+- Redux Toolkit (RTK Query)
+- TailwindCSS
+- React Router DOM
+- Vite
+- DaisyUI
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🔐 Admin Credentials
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+To access the admin dashboard, use the following credentials:
+
+```json
+{
+  "email": "team2@gmail.com",
+  "password": "72423855"
+}
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛠️ Installation & Running Locally
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Make sure you have **Node.js (18+)** and **npm** or **yarn** installed.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/yourusername/book-shop-client.git
+cd book-shop-client
 ```
+
+### 2. Install dependencies
+
+```bash
+npm install
+# or
+yarn
+```
+
+### 3. Setup Environment (if any)
+
+If your project requires environment variables, create a `.env` file and add them accordingly.
+
+### 4. Start the development server
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+The app will be running at: [http://localhost:5173](http://localhost:5173)
+
+## 🧭 Project Routes Overview
+
+### Public Routes:
+- `/` – Home Page
+- `/all-products` – All available books
+- `/about` – About Us
+- `/contact` – Contact Page
+- `/book-details/:id` – Book Details
+- `/login` – Login Page
+- `/register` – Registration Page
+- `*` – 404 Not Found
+
+### User Routes (`/user`)
+- `/user/orders` – View your orders
+- `/user/edit-profile` – Edit your profile
+- `/user/reset-password` – Reset your password
+- `/user/checkout/:id` – Checkout page
+
+### Admin Routes (`/admin`)
+- `/admin` – Admin Profile
+- `/admin/orders` – Manage all orders
+- `/admin/products` – View and manage products
+- `/admin/users` – Manage users
+- `/admin/add-book` – Add a new book
+
+## 🤝 Contribution
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## 📄 License
+
+[MIT](LICENSE)
