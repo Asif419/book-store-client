@@ -1,3 +1,7 @@
+## 📚 Book Store
+
+An interactive full-stack book marketplace built with Next.js and Redux. Users can browse, search, and purchase books in real time. Includes a responsive UI, authentication system, toast notifications, and state management using Redux Toolkit. Designed to be fast, scalable, and developer-friendly, this app is a solid example of modern e-commerce built with the latest technologies.
+
 ## 🔗 Live Link
 https://book-shop-client-ashy.vercel.app
 
@@ -64,6 +68,37 @@ yarn dev
 ```
 
 The app will be running at: [http://localhost:5173](http://localhost:5173)
+
+### 📦 Dependencies
+
+- `@radix-ui/react-label` ^2.1.4  
+- `@radix-ui/react-slot` ^1.2.0  
+- `@reduxjs/toolkit` ^2.7.0  
+- `class-variance-authority` ^0.7.1  
+- `clsx` ^2.1.1  
+- `jwt-decode` ^4.0.0  
+- `lucide-react` ^0.501.0  
+- `next` 15.3.1  
+- `react` ^19.0.0  
+- `react-dom` ^19.0.0  
+- `react-hook-form` ^7.56.1  
+- `react-hot-toast` ^2.5.2  
+- `react-redux` ^9.2.0  
+- `sweetalert2` ^11.19.1  
+- `tailwind-merge` ^3.2.0  
+- `tailwindcss-animate` ^1.0.7  
+
+### 🛠️ Dev Dependencies
+
+- `@eslint/eslintrc` ^3  
+- `@tailwindcss/postcss` ^4  
+- `@types/node` ^20  
+- `@types/react` ^19  
+- `@types/react-dom` ^19  
+- `eslint` ^9  
+- `eslint-config-next` 15.3.1  
+- `tailwindcss` ^4  
+- `typescript` ^5
 
 ## 🧭 Project Routes Overview
 
