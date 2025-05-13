@@ -6,7 +6,7 @@ import { useGetBookByIdQuery } from "../redux/features/api/endpoints/bookApi";
 import { useAppSelector } from "../redux/hook";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
-import { useMakePaymentMutation } from "../redux/features/api/endpoints/payment.Api";
+import { useMakePaymentMutation } from "../redux/features/api/endpoints/paymentApi";
 
 type FormData = {
   name: string;

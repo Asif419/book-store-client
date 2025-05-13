@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router-dom";
-import { useVerifyOrderQuery } from "../redux/features/api/endpoints/payment.Api";
+import { useVerifyOrderQuery } from "../redux/features/api/endpoints/paymentApi";
 
 interface OrderData {
   id: number;
@@ -39,7 +39,7 @@ const ThankYou = () => {
 
   const [searchParams] = useSearchParams();
 
-  const { isLoading, data } = useVerifyOrderQuery( searchParams.get("order_id"),
+  const { data } = useVerifyOrderQuery( searchParams.get("order_id"),
   {
     refetchOnMountOrArgChange: true,
   })

@@ -8,8 +8,15 @@ const UserProfile = () => {
   const [resetPassword, { isLoading }] = useResetPasswordMutation();
   const navigate = useNavigate();
 
-  const handleResetPassword = async () => {
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <span className="loading loading-spinner loading-lg text-primary"></span>
+      </div>
+    );
+  }
 
+  const handleResetPassword = async () => {
     try {
       const res = await resetPassword({ email: user?.email }).unwrap();
       toast.success(res.message || "Password reset link sent!");
@@ -17,6 +24,8 @@ const UserProfile = () => {
       toast.error(err.data?.message || "Failed to send reset email.");
     }
   };
+
+  console.log(handleResetPassword)
 
   const handleResetRedirect = () => {
     navigate("/user/reset-password");
