@@ -152,7 +152,7 @@ const router = createBrowserRouter([
     element: <Register />,
   },
   {
-    path: "/thankyou:order_id",
+    path: "/thankyou",
     element: <ThankYou />,
   },
   {
