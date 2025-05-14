@@ -25,49 +25,54 @@ export default function CheckoutPage() {
   const [makePayment, { isLoading, isSuccess, data, isError, error }] =
     useMakePaymentMutation();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormData>();
-
-  const totalPrice = quantity * (book?.data?.price || 0);
-
-  const finalData = {
-    productId: book?.data?._id,
-    quantity,
-  };
-
-  const onSubmit = async () => {
-    // toast.success("test");
-    console.log(finalData);
-    await makePayment(finalData);
-  };
-
-  const toastId = "cart";
-  useEffect(() => {
-    if (isLoading) toast.loading("Processing ...", { id: toastId });
-    if (isSuccess) {
-      toast.success(data?.message, { id: toastId });
-      if (data?.data) {
-        setTimeout(() => {
-          window.location.href = data.data;
-        }, 1000);
+    
+    const {
+      register,
+      handleSubmit,
+      formState: { },
+    } = useForm<FormData>();
+    
+    const totalPrice = quantity * (book?.data?.price || 0);
+    
+    const finalData = {
+      productId: book?.data?._id,
+      quantity,
+    };
+    
+    const onSubmit = async () => {
+      // toast.success("test");
+      console.log(finalData);
+      await makePayment(finalData);
+    };
+    
+    const toastId = "cart";
+    useEffect(() => {
+      if (isLoading) toast.loading("Processing ...", { id: toastId });
+      if (isSuccess) {
+        toast.success(data?.message, { id: toastId });
+        if (data?.data) {
+          setTimeout(() => {
+            window.location.href = data.data;
+          }, 1000);
+        }
       }
+      if (isError) toast.error(JSON.stringify(error), { id: toastId });
+    }, [isLoading, isSuccess, data, isError, error]);
+    
+    if (!book?.data || !user) {
+      return <p className="text-center py-10">Invalid access.</p>;
     }
-    if (isError) toast.error(JSON.stringify(error), { id: toastId });
-  }, [isLoading, isSuccess, data, isError, error]);
 
-  if (!book?.data || !user) {
-    return <p className="text-center py-10">Invalid access.</p>;
-  }
-
-  return (
-    <div className="min-h-screen bg-base-200 p-6 flex flex-col items-center justify-center">
+    useEffect(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, []);
+    
+    return (
+      <div className="min-h-screen bg-base-200 py-16 px-4 sm:px-6 lg:px-8 flex justify-center items-center">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="w-full max-w-5xl bg-base-100 shadow-lg rounded-xl p-6 grid grid-cols-1 md:grid-cols-2 gap-8"
-      >
+        className="w-full max-w-6xl bg-base-100 shadow-lg rounded-xl p-8 grid grid-cols-1 lg:grid-cols-2 gap-10"
+        >
         {/* Checkout Form */}
         <div>
           <h2 className="text-2xl font-bold mb-4">Checkout</h2>
@@ -78,7 +83,7 @@ export default function CheckoutPage() {
               { label: "Phone", name: "phone", type: "tel" },
               { label: "Address", name: "address", type: "textarea" },
             ].map(({ label, name, type }) => (
-              <div key={name} className="form-control">
+              <div key={name} className="form-control flex flex-row items-center justify-between">
                 <label className="label">
                   <span className="label-text mb-1">{label}</span>
                 </label>
@@ -96,9 +101,7 @@ export default function CheckoutPage() {
                     className="input input-bordered"
                   />
                 )}
-                {errors[name as keyof FormData] && (
-                  <p className="text-red-500 text-sm mt-1">{label} is required</p>
-                )}
+
               </div>
             ))}
 
@@ -121,20 +124,21 @@ export default function CheckoutPage() {
         </div>
 
         {/* Product Summary */}
-        <div className="border rounded-xl p-4 bg-base-100 shadow-sm">
+        <div className="border border-base-300 rounded-xl p-6 bg-base-100 shadow-sm h-fit">
           <h3 className="text-xl font-semibold mb-4">Product Summary</h3>
           <div className="flex gap-4">
-            <div className="w-24 h-24 bg-base-300 rounded-lg overflow-hidden">
+            <div className="w-28 h-28 bg-base-300 rounded-lg overflow-hidden">
               <img
                 src={book?.data?.cover}
                 alt=""
                 className="object-cover h-full w-full"
               />
             </div>
-            <div>
-              <h4 className="font-bold">{book?.data.title}</h4>
-              <p className="text-sm text-gray-500">{book?.data?.description}</p>
-
+            <div className="flex flex-col justify-between">
+              <div>
+                <h4 className="font-bold">{book?.data.title}</h4>
+                <p className="text-sm text-gray-500 mt-1">{book?.data?.description}</p>
+              </div>
               <label className="form-control w-full max-w-xs mt-2">
                 <span className="label-text mb-1">Quantity</span>
                 <input
@@ -146,7 +150,6 @@ export default function CheckoutPage() {
                   className="input input-bordered"
                 />
               </label>
-
               <p className="text-primary font-bold text-lg mt-2">
                 ৳ {totalPrice}
               </p>
@@ -154,8 +157,8 @@ export default function CheckoutPage() {
           </div>
         </div>
 
-        <div className="md:col-span-2 text-right mt-4">
-          <button type="submit" className="btn btn-primary px-8">
+        <div className="lg:col-span-2 text-right mt-6">
+          <button type="submit" className="btn btn-primary px-10">
             Place Order
           </button>
         </div>

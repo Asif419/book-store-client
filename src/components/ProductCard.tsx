@@ -11,6 +11,7 @@ export type TProduct = {
   inStock: boolean;
   createdAt: string;
   updatedAt: string;
+  cover: string;
   __v: number;
 };
 

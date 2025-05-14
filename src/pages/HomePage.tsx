@@ -22,12 +22,11 @@ const HomePage = () => {
       {/* Testimonials */}
       <Testimonials></Testimonials>
 
-      {/* Highlight Section */}
-      <HighlightSection />
-
-
       {/* Trusted by Brands */}
       <TrustedBrandsBanner />
+
+      {/* Highlight Section */}
+      <HighlightSection />
 
       {/* Accordion */}
       <Accordion />

@@ -40,6 +40,7 @@ const Navbar = () => {
                         <li onClick={() => document.getElementById('mainNavDropdown')?.removeAttribute('open')}><NavLink to={'all-products'} className={({ isActive }) => isActive ? "text-gray-900 font-semibold" : ""}>Books</NavLink></li>
                         <li onClick={() => document.getElementById('mainNavDropdown')?.removeAttribute('open')}><NavLink to={'about'} className={({ isActive }) => isActive ? "text-gray-900 font-semibold" : ""}>About</NavLink></li>
                         <li onClick={() => document.getElementById('mainNavDropdown')?.removeAttribute('open')}><NavLink to={'contact'} className={({ isActive }) => isActive ? "text-gray-900 font-semibold" : ""}>Contact</NavLink></li>
+                        <li onClick={() => document.getElementById('mainNavDropdown')?.removeAttribute('open')}><NavLink to={'location'} className={({ isActive }) => isActive ? "text-gray-900 font-semibold" : ""}>Location</NavLink></li>
                         {user?.role === 'admin' ? (
                             <li onClick={() => document.getElementById('mainNavDropdown')?.removeAttribute('open')}>
                                 <NavLink to="/admin" className={({ isActive }) => isActive ? "text-gray-900 font-semibold" : ""}>Dashboard</NavLink>
@@ -75,6 +76,7 @@ const Navbar = () => {
                     <li><NavLink to={'all-products'} className={({ isActive }) => isActive ? "text-yellow-300 font-semibold" : ""}>Books</NavLink></li>
                     <li><NavLink to={'about'} className={({ isActive }) => isActive ? "text-yellow-300 font-semibold" : ""}>About</NavLink></li>
                     <li><NavLink to={'contact'} className={({ isActive }) => isActive ? "text-yellow-300 font-semibold" : ""}>Contact</NavLink></li>
+                    <li><NavLink to={'location'} className={({ isActive }) => isActive ? "text-yellow-300 font-semibold" : ""}>Location</NavLink></li>
                     {user ? (
                         <div className="dropdown dropdown-end">
                             <label tabIndex={0} className="btn btn-outline btn-sm m-1">Profile</label>

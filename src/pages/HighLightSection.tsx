@@ -5,7 +5,7 @@ const HighlightSection = () => {
     <section className="flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 py-12 bg-white text-center">
       {/* CTA Button */}
       <div className="mb-6">
-        <button className="bg-green-400 hover:bg-green-500 text-white font-medium px-6 py-3 rounded-full shadow-md transition">
+        <button className="btn btn-primary text-white font-medium px-6 py-3 rounded-full shadow-md transition">
           Get started
         </button>
       </div>

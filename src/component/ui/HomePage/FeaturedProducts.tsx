@@ -19,31 +19,26 @@ const FeaturedProducts = () => {
 
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold">Featured Products</h2>
-        <Link to="/all-products">
-          <button className="btn btn-primary btn-sm">View All</button>
-        </Link>
-      </div>
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary text-center pb-12">Featured Products</h2>
 
       <div className="flex flex-wrap gap-6 justify-center">
         {featuredBooks.map((book: any, index: number) => (
           <div
             key={book.id}
-            className={`flex bg-base-100 shadow-md rounded-lg overflow-hidden w-full sm:w-[48%] lg:w-[23%] ${index > 3 ? "hidden sm:flex" : ""
+            className={`bg-gray-200 rounded-xl shadow-2xl flex overflow-hidden w-full sm:w-[48%] lg:w-[23%] ${index > 3 ? "hidden sm:flex" : ""
               }`}
           >
             <img
               src={book.cover}
               alt={book.title}
-              className="w-24 h-32 object-cover"
+              className="w-24 object-cover text-center h-full"
             />
-            <div className="flex flex-col justify-between p-4 flex-1">
+            <div className="flex flex-col justify-between py-2 px-4 flex-1">
               <div>
                 <h3 className="text-md font-semibold">{book.title}</h3>
                 <p className="text-sm text-gray-500">by {book.author}</p>
-                <p className="text-sm text-gray-600 mt-1">Category: {book.genre}</p>
-                <p className="text-sm text-gray-600">Price: ${book.price}</p>
+                <p className="text-sm text-gray-600 mt-1">Category: {book.category}</p>
+                {/* <p className="text-sm text-gray-600">Price: ${book.price}</p> */}
               </div>
               <div className="mt-4 text-right">
                 <button onClick={() => navigate(`book-details/${book._id}`)} className="btn btn-outline btn-sm">View</button>
@@ -51,6 +46,11 @@ const FeaturedProducts = () => {
             </div>
           </div>
         ))}
+      </div>
+      <div className="flex justify-end items-center mb-6">
+        <Link to="/all-products">
+          <button className="btn btn-primary btn-sm mt-5">View All</button>
+        </Link>
       </div>
     </section>
   );

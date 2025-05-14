@@ -24,7 +24,7 @@ const Testimonials = () => {
   return (
     <section className="max-w-7xl mx-auto bg-white py-12">
       <div className="max-w-6xl mx-auto text-center mb-12">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary">
           Join 30,000+ readers growing with BookShop
         </h2>
       </div>
