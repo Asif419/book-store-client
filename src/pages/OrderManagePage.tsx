@@ -11,13 +11,10 @@ const OrderManagePage = () => {
     refetchOnReconnect: true,
   });
   return (
-    <div className="max-w-5xl mx-auto px-4 py-12">
+    <div className="mx-auto px-4 y-1 md:py-4 lg:py-12">
       <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-center">
         Order Management
       </h1>
-      <p className="text-sm md:text-base lg:text-lg md:mt-2 w-full md:w-3/4 mx-auto text-center">
-        Efficiently view, update, and manage all customer orders in one place.
-      </p>
       <div className="py-6 lg:py-8">
         {/* is lading state */}
         {isLoading && (
@@ -27,7 +24,7 @@ const OrderManagePage = () => {
         )}
         {/* if data available */}
         {!isLoading && data?.data?.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {data.data.map((order: TOrder) => (
               <OrderListCard key={order._id} order={order}></OrderListCard>
             ))}

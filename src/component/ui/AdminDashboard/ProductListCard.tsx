@@ -85,15 +85,15 @@ const ProductListCard = ({ product }: { product: TListProduct }) => {
     });
   };
   return (
-    <div className="card bg-base-100 shadow-md max-w-7xl mx-auto">
-      <div className="card-body p-4 space-y-4">
+    <div className="shadow-md w-full mx-auto h-full flex flex-col justify-between">
+      <div className="bg-gray-200 rounded-2xl p-8 space-y-4">
         {/* Product Info */}
-        <div className="text-left space-y-1">
-          <h2 className="card-title text-lg md:text-xl font-semibold">{title}</h2>
-          <p className="text-sm md:text-base text-gray-600">Author: {author}</p>
-          <p className="text-sm md:text-base text-gray-600">Price: ${price}</p>
-          <p className="text-sm md:text-base text-gray-600">Category: {category}</p>
-          <p className="text-sm md:text-base text-gray-600">
+        <div className="text-left">
+          <h2 className="text-lg md:text-xl font-semibold mb-4">{title}</h2>
+          <p className="text-sm">Author: {author}</p>
+          <p className="text-sm">Price: ${price}</p>
+          <p className="text-sm">Category: {category}</p>
+          <p className="text-sm mt-2">
             Available:{" "}
             <span className={`badge ${inStock ? "badge-success" : "badge-error"} badge-sm`}>
               {inStock ? "In Stock" : "Out of Stock"}
@@ -102,14 +102,14 @@ const ProductListCard = ({ product }: { product: TListProduct }) => {
         </div>
 
         {/* Action Buttons Below Info */}
-        <div className="flex flex-col sm:flex-row gap-3 justify-start">
-          <button onClick={handleUpdateClick} className="btn btn-outline btn-primary flex items-center gap-1 w-40">
+        <div className="flex flex-row gap-3 justify-start mt-8">
+          <button onClick={handleUpdateClick} className="btn btn-sm btn-outline rounded-2xl text-yellow-600 w-1/2">
             <MdOutlineSecurityUpdate /> Update
           </button>
 
           <button
             onClick={() => handleDelete(_id)}
-            className="btn btn-outline btn-ghost flex items-center gap-1 w-40"
+            className="btn btn-sm rounded-2xl btn-outline text-red-600 w-1/2"
           >
             <MdOutlineDelete /> Delete
           </button>

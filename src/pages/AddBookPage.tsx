@@ -57,7 +57,7 @@ const AddBookPage = () => {
           <input type="checkbox" name="inStock" checked={formData.inStock} onChange={handleChange} className="checkbox" />
           In Stock
         </label>
-        <button type="submit" className="btn btn-primary" disabled={isLoading}>
+        <button type="submit" className="btn btn-primary rounded-2xl" disabled={isLoading}>
           {isLoading ? "Adding..." : "Add Book"}
         </button>
       </form>

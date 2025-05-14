@@ -8,7 +8,7 @@ const ContactPage = () => {
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div className="text-center mb-12">
-        <h1 className="text-2xl md:text-4xl font-bold text-primary mb-2">Get in Touch</h1>
+        <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-primary mb-2">Get in Touch</h1>
         <p className="text-gray-600 max-w-2xl mx-auto text-base md:text-lg">
           Have questions, feedback, or just want to say hello? We'd love to hear from you. Reach out using the form below or through our contact info.
         </p>
@@ -60,7 +60,7 @@ const ContactPage = () => {
               required
             ></textarea>
           </div>
-          <button type="submit" className="btn btn-primary w-full">
+          <button type="submit" className="btn btn-primary w-full rounded-2xl">
             Send Message
           </button>
         </form>

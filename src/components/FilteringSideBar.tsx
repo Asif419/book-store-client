@@ -22,7 +22,7 @@ const FilteringSideBar = () => {
   return (
     <div>
       <div className="flex justify-between items-center pb-4 border-b">
-        <button onClick={handleReset} className="btn btn-primary">
+        <button onClick={handleReset} className="btn btn-primary rounded-2xl">
           Reset Filter
         </button>
       </div>

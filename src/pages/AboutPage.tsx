@@ -2,12 +2,12 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const AboutPage = () => {
-    useEffect(() => {
+  useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
-
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1 md:py-4 lg:py-12 space-y-16">
+      <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-center mb-10 text-primary">About Us</h2>
       {/* Section 1 */}
       <div className="flex flex-col md:flex-row items-center gap-8 bg-base-200 rounded-lg">
         <div className="flex-1">
@@ -44,7 +44,7 @@ const AboutPage = () => {
 
       <div className="text-center">
         <Link to="/all-products">
-          <button className="btn btn-primary">Explore Our Collection</button>
+          <button className="btn btn-primary rounded-2xl">Explore Our Collection</button>
         </Link>
       </div>
     </section>

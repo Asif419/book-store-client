@@ -63,7 +63,7 @@ const BookDetailsPage = () => {
               <p className="pb-1">{book.data.quantity} pics available</p>
             </div>
             <button
-              className="btn btn-primary"
+              className="btn btn-primary rounded-2xl"
               disabled={!book.data.inStock || user?.role !== "user"}
               onClick={() => {
                 navigate(`/user/checkout/${book.data._id}`);

@@ -72,7 +72,7 @@ const LoginPage = () => {
         <div className="flex justify-center gap-2">
           <button
             type="button"
-            className="btn btn-outline btn-sm rounded-t-3xl w-1/3"
+            className="btn btn-outline btn-sm rounded-t-3xl w-1/3 rounded-2xl"
             onClick={() => {
               setValue("email", "team2@gmail.com");
               setValue("password", "72423855");
@@ -109,7 +109,7 @@ const LoginPage = () => {
           />
           {errors.password && <p className="text-error text-sm">{errors.password.message}</p>}
 
-          <button type="submit" className="btn btn-primary justify-center">Login</button>
+          <button type="submit" className="btn btn-primary justify-center rounded-2xl">Login</button>
           {loginError && (
             <div className="text-error bg-base-200 p-2 text-sm rounded">
               {loginError}

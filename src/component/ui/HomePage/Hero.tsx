@@ -16,7 +16,7 @@ const Hero = () => {
               Discover, share, and explore your favorite books all in one place. Whether you're into thrilling mysteries, heartwarming tales, or insightful nonfiction, we’ve got something for every reader. Join a community of book lovers and start your literary journey today.
             </p>
             <Link to="/all-products">
-              <button className="btn btn-primary">Browse Books</button>
+              <button className="btn btn-primary rounded-2xl">Browse Books</button>
             </Link>
           </div>
         </div>

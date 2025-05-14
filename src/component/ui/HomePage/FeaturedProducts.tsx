@@ -41,7 +41,7 @@ const FeaturedProducts = () => {
                 {/* <p className="text-sm text-gray-600">Price: ${book.price}</p> */}
               </div>
               <div className="mt-4 text-right">
-                <button onClick={() => navigate(`book-details/${book._id}`)} className="btn btn-outline btn-sm">View</button>
+                <button onClick={() => navigate(`book-details/${book._id}`)} className="btn btn-outline btn-sm rounded-2xl">View</button>
               </div>
             </div>
           </div>
@@ -49,7 +49,7 @@ const FeaturedProducts = () => {
       </div>
       <div className="flex justify-end items-center mb-6">
         <Link to="/all-products">
-          <button className="btn btn-primary btn-sm mt-5">View All</button>
+          <button className="btn btn-primary mt-5 rounded-2xl">View All</button>
         </Link>
       </div>
     </section>

@@ -158,7 +158,7 @@ export default function CheckoutPage() {
         </div>
 
         <div className="lg:col-span-2 text-right mt-6">
-          <button type="submit" className="btn btn-primary px-10">
+          <button type="submit" className="btn btn-primary px-10 rounded-2xl">
             Place Order
           </button>
         </div>

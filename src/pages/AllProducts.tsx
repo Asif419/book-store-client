@@ -39,10 +39,10 @@ const AllProducts = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-center">
+      <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-center text-primary">
         All Books – Explore Our Collection
       </h1>
-      <p className="text-sm md:text-base lg:text-lg md:mt-2 w-full text-center">
+      <p className="text-center mx-auto pb-5 text-sm md:text-base lg:text-lg md:mt-2 w-3/4 md:w-1/2">
         Discover a wide range of books across genres including fiction,
         non-fiction, romance, mystery, and more. Find your next great read and
         enjoy the magic of stories!
@@ -106,7 +106,7 @@ const AllProducts = () => {
                       <div>
                         <p className="text-sm text-gray-600 font-semibold">${book.price}</p>
                       </div>
-                      <button onClick={() => navigate(`/book-details/${book._id}`)} className="btn btn-outline btn-sm">
+                      <button onClick={() => navigate(`/book-details/${book._id}`)} className="btn btn-outline btn-sm rounded-2xl">
                         View
                       </button>
                     </div>

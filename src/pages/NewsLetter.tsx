@@ -14,7 +14,7 @@ const NewsLetter = () => {
             placeholder="Enter your email"
             className="input input-bordered w-full sm:w-2/3"
           />
-          <button type="submit" className="btn btn-primary w-full sm:w-auto">
+          <button type="submit" className="btn btn-primary w-full sm:w-auto rounded-2xl">
             Subscribe
           </button>
         </form>

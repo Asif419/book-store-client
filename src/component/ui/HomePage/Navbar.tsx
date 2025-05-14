@@ -79,7 +79,7 @@ const Navbar = () => {
                     <li><NavLink to={'location'} className={({ isActive }) => isActive ? "text-yellow-300 font-semibold" : ""}>Location</NavLink></li>
                     {user ? (
                         <div className="dropdown dropdown-end">
-                            <label tabIndex={0} className="btn btn-outline btn-sm m-1">Profile</label>
+                            <label tabIndex={0} className="btn btn-outline btn-sm m-1 rounded-2xl">Profile</label>
                             <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 text-black">
                                 {
                                     user?.role == 'admin' ? (
@@ -93,11 +93,11 @@ const Navbar = () => {
                                         null
                                 }
 
-                                <li><button onClick={handleLogout}>Logout</button></li>
+                                <li><button className="rounded-2xl" onClick={handleLogout}>Logout</button></li>
                             </ul>
                         </div>
                     ) : (
-                        <button className="btn btn-outline btn-sm"><NavLink to={'/login'} className={({ isActive }) => isActive ? "text-yellow-300 font-semibold" : ""}>Login</NavLink></button>
+                        <button className="btn btn-outline btn-sm rounded-2xl"><NavLink to={'/login'} className={({ isActive }) => isActive ? "text-yellow-300 font-semibold" : ""}>Login</NavLink></button>
                     )}
                 </ul>
                 </div>

@@ -44,30 +44,24 @@ const UserManagementCard = ({ user }: { user: TUser }) => {
   };
   return (
     <div>
-      <div className="card bg-base-100 shadow-sm border">
-        <figure className="px-10 pt-10">
-          <div className="avatar">
-            <div className="w-24 rounded-xl">
-              <img src="https://i.ibb.co.com/DfsLZQn9/download.png" />
-            </div>
-          </div>
-        </figure>
-        <div className="card-body items-center text-center">
-          <h2 className="card-title">{`${name} (${role})`}</h2>
-          <p>Email : {email}</p>
-          <p>Status : {isBlocked ? "Blocked User" : "Active User"}</p>
-          <div className="card-actions">
-            <button
-              onClick={() => handleDeactivateUser(_id)}
-              className="btn btn-primary"
-              disabled={isBlocked}
-            >
-              Deactivate Account
-            </button>
-          </div>
+      <div className="bg-gray-200 shadow-sm rounded-2xl p-8 h-full flex flex-col justify-between">
+        <div className="items-center text-center">
+          <h2 className="text-lg text-primary font-bold">{name}</h2>
+          <p className="text-sm mb-4">{`(${role})`}</p>
+          <p>{email}</p>
+          <p>{isBlocked ? "Blocked" : "Active"}</p>
+        </div>
+        <div className="mt-4 text-center mx-auto">
+          <button
+            onClick={() => handleDeactivateUser(_id)}
+            className="btn btn-sm rounded-2xl btn-outline"
+            disabled={isBlocked}
+          >
+            Deactivate
+          </button>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 

@@ -84,7 +84,7 @@ const ThankYou = () => {
           </div>
 
           <div className="card-actions justify-end mt-6">
-            <button className="btn btn-primary">Go to Dashboard</button>
+            <button className="btn btn-primary rounded-2xl">Go to Dashboard</button>
           </div>
         </div>
       </div>
