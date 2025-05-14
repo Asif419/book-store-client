@@ -18,7 +18,7 @@ const AboutPage = () => {
         </div>
         <div className="flex-1">
           <img
-            src="/src/assets/images/photo-3.jpg"
+            src="https://i.postimg.cc/vTSX53X1/temp-Image-UIqff-V.avif"
             alt="Team working"
             className="w-full rounded-lg shadow-md"
           />
@@ -29,7 +29,7 @@ const AboutPage = () => {
       <div className="flex flex-col-reverse md:flex-row items-center gap-8">
         <div className="flex-1">
           <img
-            src="/src/assets/images/photo-4.jpg"
+            src="https://i.postimg.cc/8zgM92Fp/temp-Image-WBahnw.avif"
             alt="Bookshelf inspiration"
             className="w-full rounded-lg shadow-md"
           />

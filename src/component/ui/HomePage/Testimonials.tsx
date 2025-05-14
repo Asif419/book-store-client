@@ -1,19 +1,18 @@
 const testimonialsData = [
   {
-    image: "/src/assets/images/person-1.jpg",
+    image: "https://i.postimg.cc/x1sjMHVw/temp-Image-We-LA4g.avif",
     tag: "Leaders",
     quote: "Most CEOs read a book a week. Many use platforms like BookShop to acquire key concepts that help them keep a fresh perspective—refining vision, strategy, and execution.",
     highlight: "help them keep a fresh perspective—refining vision, strategy, and execution."
   },
   {
-    image: "/src/assets/images/person-2.jpg",
+    image: "https://i.postimg.cc/5ypTTBg1/temp-Image2-LZN28.avif",
     tag: "Upskillers",
     quote: "Life changing. The ability to grasp a book’s core message in minutes opens doors to new personal and professional growth.",
     highlight: "grasp a book’s core message in minutes"
   },
   {
-    image: "/src/assets/images/person-3.jpg",
-    tag: "Lifelong learners",
+    image: "https://i.postimg.cc/0Nm3PRnV/temp-Imageo-Gt-Ds-J.avif",
     quote: "This is simply the coolest reading app. I now spend more time learning than endlessly scrolling through social media.",
     highlight: "the coolest reading app"
   }

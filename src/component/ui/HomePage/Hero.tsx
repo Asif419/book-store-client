@@ -6,7 +6,7 @@ const Hero = () => {
       <div className="hero py-12">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <img
-            src="/src/assets/images/book-1.jpeg"
+            src="https://i.postimg.cc/sD7ZYTTt/temp-Image-MYg-U8-H.avif"
             alt="Bookshelf"
             className="w-full max-w-md md:max-w-lg rounded-lg shadow-2xl"
           />

@@ -51,7 +51,7 @@ const Sidebar = () => {
         <div className="hidden md:flex flex-col space-y-4">
           <h2 className="text-2xl font-bold mb-10">Admin Panel</h2>
           <Link className="btn btn-ghost w-full text-left justify-start" to="">
-            👤 Profile
+            👤 Dashboard
           </Link>
           <Link
             className="btn btn-ghost w-full text-left justify-start"

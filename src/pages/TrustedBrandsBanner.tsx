@@ -1,13 +1,11 @@
 const TrustedBrandsBanner = () => {
   const brands = [
-    { name: "TikTok", logo: "/src/assets/icons/tiktok.png" },
-    { name: "Booking.com", logo: "/src/assets/icons/booking.png" },
-    { name: "Microsoft", logo: "/src/assets/icons/microsoft.png" },
-    { name: "Lyft", logo: "/src/assets/icons/lyft.png" },
-    { name: "Babbel", logo: "/src/assets/icons/babbel.png" },
-    { name: "TIER", logo: "/src/assets/icons/tier.png" },
-    { name: "LinkedIn", logo: "/src/assets/icons/linkedin.png" },
-    { name: "Zalando", logo: "/src/assets/icons/zalando.png" },
+    { name: "TikTok", logo: "https://i.postimg.cc/Hsr1RNqh/temp-Image-X7e4-EW.avif" },
+    { name: "Booking.com", logo: "https://i.postimg.cc/2yKymZ8R/temp-Imagevczq1-B.avif" },
+    { name: "Microsoft", logo: "https://i.postimg.cc/xdv2gbwj/temp-Imagex2g-Y5-N.avif" },
+    { name: "TIER", logo: "https://i.postimg.cc/qq5Vgc3w/temp-Image-Rdmh-XI.avif" },
+    { name: "LinkedIn", logo: "https://i.postimg.cc/G2b1fmRF/temp-Image60b-Qph.avif" },
+    { name: "Zalando", logo: "https://i.postimg.cc/bYCj6PBn/temp-Image-MMVVn-D.avif" },
   ];
 
   return (
@@ -22,7 +20,7 @@ const TrustedBrandsBanner = () => {
               key={idx}
               src={brand.logo}
               alt={brand.name}
-              className="h-10 md:h-24"
+              className="h-8 md:h-16"
             />
           ))}
         </div>
