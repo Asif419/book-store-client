@@ -2,6 +2,7 @@ import { toast } from "react-hot-toast";
 import { useAppSelector } from "../../../redux/hook";
 import { useResetPasswordMutation } from "../../../redux/features/api/endpoints/userApi";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const UserProfile = () => {
   const user = useAppSelector((state) => state.auth.user);
@@ -32,6 +33,9 @@ const UserProfile = () => {
   };
 
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   return (
     <div className="min-h-screen bg-base-200">

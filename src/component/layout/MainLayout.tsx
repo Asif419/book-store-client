@@ -3,6 +3,7 @@ import Footer from "../ui/HomePage/Footer"
 import Navbar from "../ui/HomePage/Navbar"
 
 const MainLayout = () => {
+
     return (
         <>
             <div className="min-h-screen flex flex-col">
