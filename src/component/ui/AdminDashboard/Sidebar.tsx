@@ -57,6 +57,16 @@ const Sidebar = () => {
               <li>
                 <Link to="/" onClick={() => document.getElementById("mobileMenu")?.removeAttribute("open")}>Home Page</Link>
               </li>
+              <li>
+                <button
+                  className="btn w-full text-left justify-start"
+                  onClick={() => {
+                    document.getElementById('mainNavDropdown')?.removeAttribute('open');
+                    handleLogout();
+                  }}>
+                  <NavLink to="">Logout</NavLink>
+                </button>
+              </li>
             </ul>
           </details>
         </div>
@@ -92,11 +102,11 @@ const Sidebar = () => {
             Home Page
           </Link>
           <button
-          className="btn btn-ghost w-full text-left justify-start"
-           onClick={() => {
-            document.getElementById('mainNavDropdown')?.removeAttribute('open');
-            handleLogout();
-          }}>
+            className="btn btn-ghost w-full text-left justify-start"
+            onClick={() => {
+              document.getElementById('mainNavDropdown')?.removeAttribute('open');
+              handleLogout();
+            }}>
             <NavLink to="">Logout</NavLink>
           </button>
         </div>

@@ -22,6 +22,7 @@ import NotFoundPage from "../pages/NotFoundpage";
 import AddBookPage from "../pages/AddBookPage";
 import UserManagement from "../pages/UserManagement";
 import LocationPage from "../pages/LocationPage";
+import ThankYou from "../pages/ThankYou";
 
 
 const router = createBrowserRouter([
@@ -149,6 +150,10 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/thankyou:order_id",
+    element: <ThankYou />,
   },
   {
     path: "*",

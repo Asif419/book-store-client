@@ -6,6 +6,10 @@ const UserOrders = () => {
 
   const orders = data?.data || [];
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -14,9 +18,7 @@ const UserOrders = () => {
     );
   }
 
-  useEffect(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }, []);
+
 
   return (
     <div className="min-h-screen max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

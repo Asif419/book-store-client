@@ -1,4 +1,4 @@
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import { useVerifyOrderQuery } from "../redux/features/api/endpoints/paymentApi";
 
 interface OrderData {
@@ -38,8 +38,9 @@ interface OrderData {
 const ThankYou = () => {
 
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
 
-  const { data } = useVerifyOrderQuery( searchParams.get("order_id"),
+  const { data } = useVerifyOrderQuery( searchParams.get("orderId"),
   {
     refetchOnMountOrArgChange: true,
   })
@@ -84,7 +85,12 @@ const ThankYou = () => {
           </div>
 
           <div className="card-actions justify-end mt-6">
-            <button className="btn btn-primary rounded-2xl">Go to Dashboard</button>
+            <button
+              className="btn btn-primary rounded-2xl"
+              onClick={() => navigate("/")}
+            >
+              Go to Dashboard
+            </button>
           </div>
         </div>
       </div>

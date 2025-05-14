@@ -42,7 +42,8 @@ export default function CheckoutPage() {
     const onSubmit = async () => {
       // toast.success("test");
       console.log(finalData);
-      await makePayment(finalData);
+      const res = await makePayment(finalData);
+      console.log(res)
     };
     
     const toastId = "cart";

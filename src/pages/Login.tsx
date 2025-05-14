@@ -77,7 +77,7 @@ const LoginPage = () => {
         <div className="flex justify-center gap-2">
           <button
             type="button"
-            className="btn btn-outline btn-sm rounded-t-3xl w-1/3 rounded-2xl"
+            className="btn btn-outline btn-sm rounded-t-3xl w-1/3"
             onClick={() => {
               setValue("email", "team2@gmail.com");
               setValue("password", "72423855");
