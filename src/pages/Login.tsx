@@ -47,7 +47,12 @@ const LoginPage = () => {
 
 
       toast.success("Logged in successfully!");
-      navigate('/');
+      if(res?.data?.verifiedUser?.role === 'admin') {
+        navigate('/admin');
+      }
+      else {
+        navigate('/');
+      }
     } catch (error: any) {
       const message = error?.data?.message || "Login failed. Please try again.";
       setLoginError(message);

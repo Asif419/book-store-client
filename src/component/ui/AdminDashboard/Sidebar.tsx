@@ -1,7 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useEffect, useRef } from "react";
+import { logout } from "../../../redux/features/api/endpoints/authSlice";
+import { useAppDispatch } from "../../../redux/hook";
+import toast from "react-hot-toast";
 
 const Sidebar = () => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const dropdownRef = useRef<HTMLDetailsElement | null>(null);
 
   useEffect(() => {
@@ -19,6 +24,15 @@ const Sidebar = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  const handleLogout = () => {
+    dispatch(logout());
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+
+    toast.success("Logged out successfully!");
+    navigate("/login");
+  };
 
   return (
     <>
@@ -77,6 +91,14 @@ const Sidebar = () => {
           >
             Home Page
           </Link>
+          <button
+          className="btn btn-ghost w-full text-left justify-start"
+           onClick={() => {
+            document.getElementById('mainNavDropdown')?.removeAttribute('open');
+            handleLogout();
+          }}>
+            <NavLink to="">Logout</NavLink>
+          </button>
         </div>
       </aside>
     </>
