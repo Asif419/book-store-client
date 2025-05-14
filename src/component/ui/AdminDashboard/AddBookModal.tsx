@@ -1,7 +1,7 @@
 
 import { useState } from "react";
-import { useAddBookMutation } from "../../../redux/features/api/endpoints/productApi";
 import { toast } from "sonner";
+import { useAddBookMutation } from "../../../redux/features/api/endpoints/bookApi";
 
 const AddBookModal = ({ onClose }: { onClose: () => void }) => {
   const [formData, setFormData] = useState({
@@ -18,8 +18,13 @@ const AddBookModal = ({ onClose }: { onClose: () => void }) => {
   const [addBook, { isLoading }] = useAddBookMutation();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value, type, checked } = e.target;
-    setFormData({ ...formData, [name]: type === "checkbox" ? checked : value });
+    const target = e.target as HTMLInputElement;
+    const { name, value, type, checked } = target;
+  
+    setFormData({
+      ...formData,
+      [name]: type === "checkbox" ? checked : value,
+    });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {

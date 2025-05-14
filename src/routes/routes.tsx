@@ -21,6 +21,8 @@ import ResetPassword from "../component/ui/UserDashboard/ResetPassword";
 import NotFoundPage from "../pages/NotFoundpage";
 import AddBookPage from "../pages/AddBookPage";
 import UserManagement from "../pages/UserManagement";
+import LocationPage from "../pages/LocationPage";
+import ThankYou from "../pages/ThankYou";
 
 
 const router = createBrowserRouter([
@@ -39,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "about",
         element: <AboutPage />,
+      },
+      {
+        path: "location",
+        element: <LocationPage />,
       },
       {
         path: "contact",
@@ -144,6 +150,10 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/thankyou",
+    element: <ThankYou />,
   },
   {
     path: "*",

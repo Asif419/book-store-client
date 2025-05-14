@@ -22,6 +22,7 @@ const LoginPage = () => {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<LoginFormValues>();
 
   if (isLoading) {
@@ -46,7 +47,12 @@ const LoginPage = () => {
 
 
       toast.success("Logged in successfully!");
-      navigate('/');
+      if(res?.data?.verifiedUser?.role === 'admin') {
+        navigate('/admin');
+      }
+      else {
+        navigate('/');
+      }
     } catch (error: any) {
       const message = error?.data?.message || "Login failed. Please try again.";
       setLoginError(message);
@@ -54,9 +60,42 @@ const LoginPage = () => {
   };
 
   return (
-    <section className="flex justify-center items-center min-h-screen px-4">
-      <div className="w-full max-w-md bg-base-100 shadow-md rounded-lg p-8 space-y-6">
-        <h2 className="text-2xl font-bold text-center">Login to Your Account</h2>
+    <section className="min-h-screen flex items-center justify-center bg-base-200 px-4">
+      <div className="w-full max-w-md dark:bg-base-100 p-8 shadow-lg border-0.5 bg-gray-100 rounded-4xl space-y-6">
+        <div className="flex flex-row justify-between items-center">
+          <div>
+            <h2 className="text-3xl font-bold text-center text-primary">Welcome Back</h2>
+          </div>
+          <div>
+            <Link to="/" className="link link-hover">🏠 Back to Home</Link>
+          </div>
+        </div>
+        <div>
+        </div>
+
+        {/* Credential Buttons */}
+        <div className="flex justify-center gap-2">
+          <button
+            type="button"
+            className="btn btn-outline btn-sm rounded-t-3xl w-1/3"
+            onClick={() => {
+              setValue("email", "team2@gmail.com");
+              setValue("password", "72423855");
+            }}
+          >
+            Admin Login
+          </button>
+          <button
+            type="button"
+            className="btn btn-outline btn-sm rounded-b-3xl w-1/3"
+            onClick={() => {
+              setValue("email", "asif419@gmail.com");
+              setValue("password", "123456");
+            }}
+          >
+            User Login
+          </button>
+        </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <input
@@ -75,7 +114,7 @@ const LoginPage = () => {
           />
           {errors.password && <p className="text-error text-sm">{errors.password.message}</p>}
 
-          <button type="submit" className="btn btn-primary w-full">Login</button>
+          <button type="submit" className="btn btn-primary justify-center rounded-2xl">Login</button>
           {loginError && (
             <div className="text-error bg-base-200 p-2 text-sm rounded">
               {loginError}
@@ -84,12 +123,7 @@ const LoginPage = () => {
         </form>
 
         <div className="flex justify-between items-center pt-4 border-t text-sm text-gray-500">
-          <Link to="/register" className="link link-hover">
-            ➕ Create Account
-          </Link>
-          <Link to="/" className="link link-hover">
-            🏠 Back to Home
-          </Link>
+          <Link to="/register" className="link link-hover">➕ Create Account</Link>
         </div>
       </div>
     </section>

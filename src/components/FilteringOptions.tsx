@@ -36,8 +36,8 @@ const FilteringOptions = ({ field, value }: FilterOptionsProps) => {
   };
 
   return (
-    <div className="flex gap-2 items-center p-2 border-b border-x rounded-sm btn">
-      <button onClick={handleFilter}>{value}</button>
+    <div className="flex gap-2 items-center justify-start p-2 border-b border-x rounded-sm btn">
+      <button className="rounded-2xl" onClick={handleFilter}>{value}</button>
     </div>
   );
 };

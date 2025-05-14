@@ -33,41 +33,57 @@ const OrderList = ({ order }: { order: TOrder }) => {
   };
 
   return (
-    <div className="card bg-neutral text-neutral-content w-full">
-      <div className="card-body items-start text-center">
-        <h2 className="card-title mx-auto">👤{email}</h2>
-        <p className="text-sm md:text-base">Product Id : {productId}</p>
-        <p className="text-sm md:text-base">Quantity : {quantity}</p>
-        <p className="text-sm md:text-base">Total Price : {totalPrice}</p>
-        <p className="text-sm md:text-base">Status : {status}</p>
-        <div className="card-actions justify-end">
-          {/* The button to open modal */}
-          <label
-            htmlFor="my_modal_7"
-            className="btn btn-ghost text-yellow-500 border-t-2 border-blue-400"
-          >
-            Update <MdOutlineSecurityUpdate />
-          </label>
-
-          {/* Put this part before </body> tag */}
-          <input type="checkbox" id="my_modal_7" className="modal-toggle" />
-          <div className="modal" role="dialog">
-            <div className="modal-box">
-              <h3 className="text-lg font-bold">Hello!</h3>
-              <p className="py-4">This modal works with a hidden checkbox!</p>
-            </div>
-            <label className="modal-backdrop" htmlFor="my_modal_7">
-              Close
-            </label>
-          </div>
-
-          <button
-            onClick={() => handleDelete(_id)}
-            className="btn btn-ghost text-red-500 border-t-2 border-blue-400"
-          >
-            Delete <MdOutlineDelete />
-          </button>
+    <div className="bg-base-100 border border-base-300 rounded-lg shadow-sm p-6 space-y-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div>
+          <p className="text-sm text-gray-500">Customer Email</p>
+          <p className="font-semibold">{email}</p>
         </div>
+        <div>
+          <p className="text-sm text-gray-500">Product ID</p>
+          <p className="font-medium break-all">{productId}</p>
+        </div>
+        <div>
+          <p className="text-sm text-gray-500">Order Status</p>
+          <p className={`font-semibold ${status === "Completed" ? "text-green-600" : status === "Cancelled" ? "text-red-600" : "text-yellow-600"}`}>
+            {status}
+          </p>
+        </div>
+        <div>
+          <p className="text-sm text-gray-500">Quantity</p>
+          <p className="font-medium">{quantity}</p>
+        </div>
+        <div>
+          <p className="text-sm text-gray-500">Total Price</p>
+          <p className="font-semibold text-primary">${totalPrice}</p>
+        </div>
+      </div>
+
+      <div className="flex justify-end gap-4 pt-4">
+        {/* Update button */}
+        <label htmlFor="my_modal_7" className="btn btn-sm btn-outline btn-warning">
+          <MdOutlineSecurityUpdate className="mr-1" /> Update
+        </label>
+
+        {/* Modal */}
+        <input type="checkbox" id="my_modal_7" className="modal-toggle" />
+        <div className="modal" role="dialog">
+          <div className="modal-box">
+            <h3 className="text-lg font-bold">Update Order</h3>
+            <p className="py-4">This modal will be used to update order status.</p>
+          </div>
+          <label className="modal-backdrop" htmlFor="my_modal_7">
+            Close
+          </label>
+        </div>
+
+        {/* Delete button */}
+        <button
+          onClick={() => handleDelete(_id)}
+          className="btn btn-sm btn-outline btn-error"
+        >
+          <MdOutlineDelete className="mr-1" /> Delete
+        </button>
       </div>
     </div>
   );

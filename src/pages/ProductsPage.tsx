@@ -23,13 +23,13 @@ const ProductsPage = () => {
   // handle add book
 
   return (
-    <div className="pt-4 md:pt-6 lg:pt-10">
+    <div className="y-1 md:py-4 lg:py-12 ">
       <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-center py-4">
         📦 Manage Products
       </h1>
       <div className="flex justify-end px-4 mb-6">
         <div className="flex justify-end px-4 mb-6">
-          <Link to="/admin/add-book" className="btn btn-primary">
+          <Link to="/admin/add-book" className="btn btn-primary rounded-2xl">
             Add Book
           </Link>
         </div>
@@ -53,7 +53,7 @@ const ProductsPage = () => {
             <p>No Orders Placed at this moment!</p>
           </div>
         )}
-        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-6 px-4">
+        <div className="px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {!isLoading &&
             products.data.map((product: TListProduct) => (
               <ProductListCard

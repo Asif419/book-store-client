@@ -14,7 +14,7 @@ const PromoCarousel = () => {
           <div className="md:w-2/5 w-full p-6 flex flex-col justify-center">
             <h2 className="text-2xl font-bold mb-2">Discover New Arrivals</h2>
             <p className="mb-4">Explore the latest trending books handpicked for you.</p>
-            <button className="btn btn-primary w-fit">Browse Now</button>
+            <button className="btn btn-primary w-fit rounded-2xl">Browse Now</button>
           </div>
         </div>
         <div className="absolute left-4 top-1/2 -translate-y-1/2">
@@ -38,7 +38,7 @@ const PromoCarousel = () => {
           <div className="md:w-2/5 w-full p-6 flex flex-col justify-center">
             <h2 className="text-2xl font-bold mb-2">Up to 40% Off</h2>
             <p className="mb-4">Grab your favorite books now with huge discounts!</p>
-            <button className="btn btn-secondary w-fit">Shop Deals</button>
+            <button className="btn btn-secondary w-fit rounded-2xl">Shop Deals</button>
           </div>
         </div>
         <div className="absolute left-4 top-1/2 -translate-y-1/2">
@@ -62,7 +62,7 @@ const PromoCarousel = () => {
           <div className="md:w-2/5 w-full p-6 flex flex-col justify-center">
             <h2 className="text-2xl font-bold mb-2">Join Our Book Community</h2>
             <p className="mb-4">Be a part of thousands of book lovers around the world.</p>
-            <button className="btn btn-accent w-fit">Sign Up Free</button>
+            <button className="btn btn-accent w-fit rounded-2xl">Sign Up Free</button>
           </div>
         </div>
         <div className="absolute left-4 top-1/2 -translate-y-1/2">

@@ -92,103 +92,100 @@ const OrderListCard = ({ order }: { order: TOrder }) => {
     });
   };
   return (
-    <div className="card bg-neutral text-neutral-content w-full">
-      <div className="card-body items-start text-center">
-        <h2 className="card-title mx-auto">{productId}</h2>
-        <p className="text-sm md:text-base">Email : {email}</p>
-        <p className="text-sm md:text-base">TotalPrice : {totalPrice}</p>
-        <p className="text-sm md:text-base">Quantity : {quantity}</p>
-        <p className="text-sm md:text-base">Status : {status}</p>
-        <div className="card-actions justify-end">
-          {/* The button to open modal */}
-          <label
-            htmlFor="my_modal_7"
-            className="btn btn-ghost text-yellow-500 border-t-2 border-violet-400"
-          >
-            Update <MdOutlineSecurityUpdate />
+    <>
+      <div className="bg-gray-200 border border-base-300 rounded-4xl shadow-sm p-8 w-full h-full flex flex-col justify-between">
+        <p className="text-center mx-auto w-1/2 md:w-full text-sm font-bold text-primary mb-6 border-1 rounded-2xl p-[2px]"> {status}</p>
+        <h2 className="text-sm font-bold">{productId}</h2>
+        <p className="text-sm text-gray-600 mb-4"> {email}</p>
+        <p className="text-sm font-semibold text-gray-600"><span className="font-semibold">Quantity:</span> {quantity}</p>
+        <p className="text-sm text-gray-600 font-bold"><span className="font-semibold">Total Price:</span> ${totalPrice}</p>
+
+        <div className="flex justify-center items-center gap-4 mt-8">
+          <label htmlFor="my_modal_7" className="btn btn-sm btn-outline rounded-2xl text-yellow-600">
+            <MdOutlineSecurityUpdate className="text-lg" /> Update
           </label>
-
-          {/* Put this part before </body> tag */}
-          <input type="checkbox" id="my_modal_7" className="modal-toggle" />
-          <div className="modal" role="dialog">
-            <div className="modal-box">
-              <div className="hero bg-base-200">
-                <div className="card bg-base-100 w-full shrink-0 shadow-2xl">
-                  <h3 className="text-lg md:text-xl font-semibold text-center">
-                    Update Order
-                  </h3>
-                  <form onSubmit={handleSubmit(onSubmit)} className="card-body">
-                    <fieldset className="fieldset">
-                      <label className="fieldset-label">Email</label>
-                      <input
-                        type="email"
-                        className="input"
-                        placeholder="Email"
-                        {...register("email")}
-                      />
-                      <label className="fieldset-label">ProductId</label>
-                      <input
-                        type="text"
-                        className="input"
-                        placeholder="ProductId"
-                        {...register("productId")}
-                      />
-                      <label className="fieldset-label">Quantity</label>
-                      <input
-                        type="number"
-                        className="input"
-                        placeholder="Quantity"
-                        {...register("quantity", {
-                          valueAsNumber: true,
-                          min: 1,
-                        })}
-                      />
-                      <label className="fieldset-label">Total Price</label>
-                      <input
-                        type="number"
-                        step="any"
-                        className="input"
-                        placeholder="Total Price"
-                        {...register("totalPrice", {
-                          valueAsNumber: true,
-                          min: 0,
-                        })}
-                      />
-                      <label className="fieldset-label">Status</label>
-                      <select
-                        defaultValue="Pick a color"
-                        className="select"
-                        {...register("status")}
-                      >
-                        <option disabled={true}>Status</option>
-                        <option value="paid">Paid</option>
-                        <option value="pending">Pending</option>
-                        <option value="completed">Completed</option>
-                        <option value="cancelled">Cancelled</option>
-                        <option value="shipped">Shipped</option>
-                      </select>
-                      <button className="btn btn-primary mt-4">
-                        Update Order
-                      </button>
-                    </fieldset>
-                  </form>
-                </div>
-              </div>
-            </div>
-            <label className="modal-backdrop" htmlFor="my_modal_7">
-              Close
-            </label>
-          </div>
-
-          <button
-            onClick={() => handleDelete(_id)}
-            className="btn btn-ghost text-red-500 border-t-2 border-violet-400"
-          >
-            Delete <MdOutlineDelete />
+          <button onClick={() => handleDelete(_id)} className="btn btn-sm rounded-2xl btn-outline text-red-600">
+            <MdOutlineDelete className="text-lg" /> Delete
           </button>
         </div>
       </div>
-    </div>
+
+      {/* Put this part before </body> tag */}
+      <input type="checkbox" id="my_modal_7" className="modal-toggle" />
+      <div className="modal" role="dialog">
+        <div className="modal-box">
+          <div className="hero bg-base-200">
+            <div className="card bg-base-100 w-full shrink-0 shadow-2xl">
+              <h3 className="text-lg md:text-xl font-semibold text-center">
+                Update Order
+              </h3>
+              <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+                <fieldset className="fieldset">
+                  <label className="fieldset-label">Email</label>
+                  <input
+                    type="email"
+                    className="input w-full bg-base-200"
+                    placeholder="Email"
+                    {...register("email")}
+                    readOnly
+                  />
+                  <label className="fieldset-label">ProductId</label>
+                  <input
+                    type="text"
+                    className="input w-full bg-base-200"
+                    placeholder="ProductId"
+                    {...register("productId")}
+                    readOnly
+                  />
+                  <label className="fieldset-label">Quantity</label>
+                  <input
+                    type="number"
+                    className="input w-full bg-base-200"
+                    placeholder="Quantity"
+                    {...register("quantity", {
+                      valueAsNumber: true,
+                      min: 1,
+                    })}
+                    readOnly
+                  />
+                  <label className="fieldset-label">Total Price</label>
+                  <input
+                    type="number"
+                    step="any"
+                    className="input w-full bg-base-200"
+                    placeholder="Total Price"
+                    {...register("totalPrice", {
+                      valueAsNumber: true,
+                      min: 0,
+                    })}
+                    readOnly
+                  />
+                  <label className="fieldset-label">Status</label>
+                  <select
+                    defaultValue="Pick a color"
+                    className="select w-full"
+                    {...register("status")}
+                  >
+                    <option disabled={true}>Status</option>
+                    <option value="paid">Paid</option>
+                    <option value="pending">Pending</option>
+                    <option value="completed">Completed</option>
+                    <option value="cancelled">Cancelled</option>
+                    <option value="shipped">Shipped</option>
+                  </select>
+                  <button className="btn btn-sm btn-primary rounded-2xl mt-4 w-full">
+                    Update Order
+                  </button>
+                </fieldset>
+              </form>
+            </div>
+          </div>
+        </div>
+        <label className="modal-backdrop" htmlFor="my_modal_7">
+          Close
+        </label>
+      </div>
+    </>
   );
 };
 

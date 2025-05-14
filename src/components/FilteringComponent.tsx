@@ -25,43 +25,19 @@ const FilteringComponent = () => {
   };
 
   const filterObject = isLoading
-  ? { title: [], author: [], category: [] }
-  : getUniqueValuesFromFields(data.data, ["title", "author", "category"]);
+    ? { title: [], author: [], category: [] }
+    : getUniqueValuesFromFields(data.data, ["title", "author", "category"]);
 
   return (
     <div>
       <div>
-        <h4 className="text-lg md:text-xl lg:text-2xl py-4">Name</h4>
-        <div className="h-96 overflow-y-auto">
-          {/* name filtering options  */}
-          {!isLoading &&
-            filterObject.title.map((filterValue: string, index: number) => (
-              <FilteringOptions
-                key={index}
-                field="title"
-                value={filterValue}
-              ></FilteringOptions>
-            ))}
-        </div>
+        <h4 className="text-lg md:text-xl lg:text-2xl py-2 font-bold">Price</h4>
+        <PriceRangeSlider></PriceRangeSlider>
       </div>
       <div>
-        <h4 className="text-lg md:text-xl lg:text-2xl py-4">Authors</h4>
-        <div className="h-96 overflow-y-auto">
-          {/* author filtering options  */}
-          {!isLoading &&
-            filterObject.author.map((filterValue: string, index: number) => (
-              <FilteringOptions
-                key={index}
-                field="author"
-                value={filterValue}
-              ></FilteringOptions>
-            ))}
-        </div>
-      </div>
-      <div>
-        <h4 className="text-lg md:text-xl lg:text-2xl py-4">Category</h4>
+        <h4 className="text-lg md:text-xl lg:text-2xl py-2 font-bold">Category</h4>
         {/* category filtering options  */}
-        <div className="h-96 overflow-y-auto">
+        <div className="overflow-y-auto">
           {!isLoading &&
             filterObject.category.map((filterValue: string, index: number) => (
               <FilteringOptions
@@ -73,8 +49,18 @@ const FilteringComponent = () => {
         </div>
       </div>
       <div>
-        <h4 className="text-lg md:text-xl lg:text-2xl pt-6">Price</h4>
-        <PriceRangeSlider></PriceRangeSlider>
+        <h4 className="text-lg md:text-xl lg:text-2xl py-2 font-bold">Authors</h4>
+        <div className="overflow-y-auto">
+          {/* author filtering options  */}
+          {!isLoading &&
+            filterObject.author.map((filterValue: string, index: number) => (
+              <FilteringOptions
+                key={index}
+                field="author"
+                value={filterValue}
+              ></FilteringOptions>
+            ))}
+        </div>
       </div>
     </div>
   );

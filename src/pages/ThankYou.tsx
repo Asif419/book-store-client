@@ -1,5 +1,5 @@
-import { useSearchParams } from "react-router-dom";
-import { useVerifyOrderQuery } from "../redux/features/api/endpoints/payment.Api";
+import { useSearchParams, useNavigate } from "react-router-dom";
+import { useVerifyOrderQuery } from "../redux/features/api/endpoints/paymentApi";
 
 interface OrderData {
   id: number;
@@ -38,8 +38,9 @@ interface OrderData {
 const ThankYou = () => {
 
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
 
-  const { isLoading, data } = useVerifyOrderQuery( searchParams.get("order_id"),
+  const { data } = useVerifyOrderQuery( searchParams.get("orderId"),
   {
     refetchOnMountOrArgChange: true,
   })
@@ -65,26 +66,13 @@ const ThankYou = () => {
           <h2 className=" text-success text-2xl text-center">🎉 Thank You!</h2>
           <p className="text-lg text-center">Your order has been placed successfully.</p>
 
-          <div className="divider">Order Summary</div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
-            <div><span className="font-semibold">Order ID:</span> {order?.order_id}</div>
-            <div><span className="font-semibold">Date:</span> {order?.date_time}</div>
-            <div><span className="font-semibold">Name:</span> {order?.name}</div>
-            <div><span className="font-semibold">Email:</span> {order?.email}</div>
-            {/* <div><span className="font-semibold">Product:</span> {order.product}</div> */}
-            {/* <div><span className="font-semibold">Quantity:</span> {order?.address}</div> */}
-            <div><span className="font-semibold">Total Price:</span> ${order?.amount}</div>
-            <div><span className="font-semibold">Status:</span> 
-              <span className={`ml-1 badge ${order?.bank_status === "Success" ? "badge-success" : "badge-error"}`}>
-                {order?.bank_status}
-              </span>
-            </div>
-            <div><span className="font-semibold">Payment Method:</span> {order?.method}</div>
-          </div>
-
           <div className="card-actions justify-end mt-6">
-            <button className="btn btn-primary">Go to Dashboard</button>
+            <button
+              className="btn btn-primary rounded-2xl"
+              onClick={() => navigate("/")}
+            >
+              Go to Dashboard
+            </button>
           </div>
         </div>
       </div>

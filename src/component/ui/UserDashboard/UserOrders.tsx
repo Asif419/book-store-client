@@ -1,9 +1,14 @@
+import { useEffect } from "react";
 import { useGetOwnOrdersQuery } from "../../../redux/features/api/endpoints/orderApi";
 
 const UserOrders = () => {
   const { data, isLoading, isError } = useGetOwnOrdersQuery();
 
   const orders = data?.data || [];
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   if (isLoading) {
     return (
@@ -13,8 +18,10 @@ const UserOrders = () => {
     );
   }
 
+
+
   return (
-    <div className="max-w-5xl mx-auto px-4 py-6">
+    <div className="min-h-screen max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <h2 className="text-2xl font-bold mb-6">🛒 My Orders</h2>
 
       {isLoading && <p>Loading My orders...</p>}

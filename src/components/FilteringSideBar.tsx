@@ -22,12 +22,11 @@ const FilteringSideBar = () => {
   return (
     <div>
       <div className="flex justify-between items-center pb-4 border-b">
-        <h3 className="text-lg md:text-xl font-medium">Filter</h3>
-        <button onClick={handleReset} className="btn btn-primary">
+        <button onClick={handleReset} className="btn btn-primary rounded-2xl">
           Reset Filter
         </button>
       </div>
-      <div className="py-2 md:py-4 space-y-4">
+      <div className="py-2 md:py-4 space-y-2">
         <FilteringComponent></FilteringComponent>
       </div>
     </div>

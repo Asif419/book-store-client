@@ -34,11 +34,23 @@ const ResetPassword = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-[50vh] px-4">
-      <div className="card w-full max-w-md bg-base-100 shadow-lg p-6">
-        <h2 className="text-2xl font-bold mb-4 text-center">
-          🔐 Reset Password
-        </h2>
+    <div className="flex justify-center items-center min-h-svh px-4 rounded-2xl">
+      <div className="card w-full max-w-md bg-gray-200 shadow-2xl rounded-2xl p-8">
+        <div className="flex flex-row items-center justify-between mb-4">
+          <div>
+            <h2 className="text-xl font-bold text-center">
+              Reset Password
+            </h2>
+          </div>
+          <div>
+            <button
+              onClick={() => navigate(-1)}
+              className="btn btn-ghost rounded-2xl"
+            >
+              ← Back
+            </button>
+          </div>
+        </div>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <input
             type="password"
@@ -62,16 +74,18 @@ const ResetPassword = () => {
           {watch("newPassword") &&
             watch("confirmPassword") &&
             watch("newPassword") !== watch("confirmPassword") && (
-              <p className="text-red-500 text-sm">Passwords do not match</p>
+              <p className="text-red-500 text-sm text-center">Passwords do not match</p>
             )}
 
-          <button
-            type="submit"
-            className="btn btn-primary w-full"
-            disabled={isLoading}
-          >
-            {isLoading ? "Resetting..." : "Reset Password"}
-          </button>
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className="btn btn-primary rounded-2xl"
+              disabled={isLoading}
+            >
+              {isLoading ? "Resetting..." : "Reset Password"}
+            </button>
+          </div>
         </form>
       </div>
     </div>

@@ -11,9 +11,9 @@ const UserManagement = () => {
     refetchOnReconnect: true,
   });
   return (
-    <div className="max-w-5xl mx-auto px-4 py-12">
-      <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-center">
-        User management
+    <div className="mx-auto px-4y-1 md:py-4 lg:py-12">
+      <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-center py-4 mb-8">
+        User Management
       </h1>
 
       {/* is lading state */}
@@ -24,7 +24,7 @@ const UserManagement = () => {
       )}
       {/* if data available */}
       {!isLoading && data.data?.length > 0 && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="px-4 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-3">
           {data.data.map((user: TUser) => (
             <UserManagementCard key={user._id} user={user} />
           ))}

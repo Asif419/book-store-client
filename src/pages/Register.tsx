@@ -89,7 +89,7 @@ const Register = () => {
             <p className="text-error text-sm">{errors.confirmPassword.message}</p>
           )}
 
-          <button type="submit" className="btn btn-primary w-full">Register</button>
+          <button type="submit" className="btn btn-primary w-full rounded-2xl">Register</button>
         </form>
 
         <div className="flex justify-between items-center pt-4 border-t text-sm text-gray-500">
